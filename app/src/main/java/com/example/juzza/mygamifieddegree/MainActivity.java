@@ -15,3 +15,4 @@ public class MainActivity extends AppCompatActivity {
 
 //Hello This is Jade Soo
 //Justin Test
+//Hi, Eric here
