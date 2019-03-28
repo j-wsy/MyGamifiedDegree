@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent LoginScreen = new Intent(MainActivity.this, HomeActivity.class);
                     startActivity(LoginScreen);
                 } else {
-                    Toast.makeText(MainActivity.this, "Login error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Error: Unable to log-in - could not find an existing user with that name and password!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

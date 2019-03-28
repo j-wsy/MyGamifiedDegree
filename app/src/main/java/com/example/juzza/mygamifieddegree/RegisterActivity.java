@@ -50,16 +50,16 @@ public class RegisterActivity extends AppCompatActivity {
                 if(psw.equals(cfpsw)){
                     long val=db.addUser(user,psw);
                     if (val>0) {
-                        Toast.makeText(RegisterActivity.this, "You have registered", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Registered successfully!", Toast.LENGTH_SHORT).show();
                         Intent movetologin = new Intent(RegisterActivity.this, MainActivity.class);
                         startActivity(movetologin);
                     }else{
-                        Toast.makeText(RegisterActivity.this, "registered error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Error: Registration unsuccessful", Toast.LENGTH_SHORT).show();
 
 
                     }
                 }else{
-                    Toast.makeText(RegisterActivity.this,"password not match",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,"Error: Password does not match!",Toast.LENGTH_SHORT).show();
                 }
             }
         });
