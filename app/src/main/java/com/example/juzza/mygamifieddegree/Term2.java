@@ -4,9 +4,15 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -18,6 +24,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Term2 extends Fragment {
+
+    RecyclerView recyclerView;
+    RecyclerViewAdapter adapter;
+    List<Course> courseList;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,6 +69,7 @@ public class Term2 extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -64,7 +77,21 @@ public class Term2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_term2, container, false);
+        courseList = new ArrayList<>();
+        View rootView = inflater.inflate(R.layout.fragment_term2, container, false);
+        recyclerView = rootView.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        //courseList.add(new Course("INFS 1609", R.drawable.infs1609));
+        //courseList.add(new Course("INFS 2603", R.drawable.infs2603));
+        //courseList.add(new Course("INFS 1609", R.drawable.infs1609));
+        //courseList.add(new Course("INFS 2603", R.drawable.infs2603));
+
+        DbHelper dbHelper = new DbHelper(getActivity());
+        courseList = dbHelper.getAllCoreCourses();
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(),courseList);
+        recyclerView.setAdapter(adapter);
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 String pwd = mTextPassword.getText().toString().trim();
                 Boolean res = db.checkUsers(user, pwd);
                 if (res == true) {
-                    Intent LoginScreen = new Intent(MainActivity.this, HomeActivity.class);
+                    Intent LoginScreen = new Intent(MainActivity.this, CourseOverview.class);
                     startActivity(LoginScreen);
                 } else {
                     Toast.makeText(MainActivity.this, "Error: Unable to log-in - could not find an existing user with that name and password!", Toast.LENGTH_SHORT).show();
@@ -55,9 +55,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-
-//Hello This is Jade Soo
-//Justin Test
-//Hi, Eric here
-//  GARRY HEREE

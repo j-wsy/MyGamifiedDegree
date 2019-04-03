@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="faculty">
+        <item>Arts and Social Science</item>
+        <item>Science</item>
+    </string-array>
 </resources>
