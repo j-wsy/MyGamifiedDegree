@@ -18,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private Context mContext;
 
     //DB version, table and database name
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 7;
     private static final String DB_NAME = "CoursesDb";
     private static final String DB_TABLE = "Courses";
 
@@ -56,7 +56,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     private void addCourses() {
-        Course c1 = new Course("INFS1602","Information Systems","Digital Transformation in Business \n\nStudents will learn to appreciate existing and emerging technologies affecting businesses, business relationships and their products and services. \n\nThe topics that are covered include: understanding the relationship between IS, Organisations & Strategy, dominant Business Models enabled by the Internet & Web 2.0 technology.\n\n","Assessment Structure: \n- Workshop Participation: 20% \n- Midsession Quiz: 15% \n- Team Project: 15% \n- Final Exam: 50%","Core",1,0,"","");
+        Course c1 = new Course("INFS1602","Information Systems","Digital Transformation in Business \n\nStudents will learn to appreciate existing and emerging technologies affecting businesses, business relationships and their products and services. \n\nThe topics that are covered include: understanding the relationship between IS, Organisations & Strategy, dominant Business Models enabled by the Internet & Web 2.0 technology.","Assessment Structure: \n- Workshop Participation: 20% \n- Midsession Quiz: 15% \n- Team Project: 15% \n- Final Exam: 50%","Core",1,0,"","");
         this.addCourseToDB(c1);
         Course c2 = new Course("INFS1603","Information Systems","Introduction to Business Databases","","Core",1,0, "This course is only offered in T1 & T2","");
         this.addCourseToDB(c2);
@@ -121,10 +121,11 @@ public class DbHelper extends SQLiteOpenHelper {
         values.put(CourseDescription,c.getCourseDescription());
         values.put(AssessmentStructure,c.getAssessmentStructure());
         values.put(CourseType,c.getCourseType());
-        values.put(IsCompleted,c.getIsCompleted());
         values.put(IsEnabled,c.getIsEnabled());
+        values.put(IsCompleted,c.getIsCompleted());
         values.put(courseError,c.getCourseError());
         values.put(term,c.getTerm());
+
         dbase.insert(DB_TABLE, null, values);
     }
 
@@ -142,8 +143,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 c.setCourseTitle(cursor.getString(0));
                 c.setCourseFaculty(cursor.getString(1));
                 c.setCourseDescription(cursor.getString(2));
-                c.setCourseType(cursor.getString(3));
-                c.setAssessmentStructure(cursor.getString(4));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
                 c.setIsEnabled(cursor.getInt(5));
                 c.setIsCompleted(cursor.getInt(6));
                 c.setCourseError(cursor.getString(7));
@@ -169,8 +170,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 c.setCourseTitle(cursor.getString(0));
                 c.setCourseFaculty(cursor.getString(1));
                 c.setCourseDescription(cursor.getString(2));
-                c.setCourseType(cursor.getString(3));
-                c.setAssessmentStructure(cursor.getString(4));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
                 c.setIsEnabled(cursor.getInt(5));
                 c.setIsCompleted(cursor.getInt(6));
                 c.setCourseError(cursor.getString(7));
@@ -197,8 +198,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 c.setCourseTitle(cursor.getString(0));
                 c.setCourseFaculty(cursor.getString(1));
                 c.setCourseDescription(cursor.getString(2));
-                c.setCourseType(cursor.getString(3));
-                c.setAssessmentStructure(cursor.getString(4));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
                 c.setIsEnabled(cursor.getInt(5));
                 c.setIsCompleted(cursor.getInt(6));
                 c.setCourseError(cursor.getString(7));
@@ -225,8 +226,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 c.setCourseTitle(cursor.getString(0));
                 c.setCourseFaculty(cursor.getString(1));
                 c.setCourseDescription(cursor.getString(2));
-                c.setCourseType(cursor.getString(3));
-                c.setAssessmentStructure(cursor.getString(4));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
                 c.setIsEnabled(cursor.getInt(5));
                 c.setIsCompleted(cursor.getInt(6));
                 c.setCourseError(cursor.getString(7));
