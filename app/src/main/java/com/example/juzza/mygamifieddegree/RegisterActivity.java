@@ -55,8 +55,6 @@ public class RegisterActivity extends AppCompatActivity {
                         startActivity(movetologin);
                     }else{
                         Toast.makeText(RegisterActivity.this, "Error: Registration unsuccessful", Toast.LENGTH_SHORT).show();
-
-
                     }
                 }else{
                     Toast.makeText(RegisterActivity.this,"Error: Password does not match!",Toast.LENGTH_SHORT).show();

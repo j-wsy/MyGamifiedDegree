@@ -48,7 +48,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="10dp"
-                    android:textSize="25sp"
+                    android:textSize="25dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -57,9 +57,30 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:textAlignment="center"
+                    android:layout_marginBottom="30dp"
                     android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/assessmentStructure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:textSize="16sp" />
+
+
+                <Button
+                    android:id="@+id/addButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Add Course"
+                    android:textColor="@color/darkGrey" />
 
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>

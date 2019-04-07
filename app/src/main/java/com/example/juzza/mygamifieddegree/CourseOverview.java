@@ -1,19 +1,25 @@
 package com.example.juzza.mygamifieddegree;
 
+import android.app.ActionBar;
+import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 public class CourseOverview extends AppCompatActivity implements Term1.OnFragmentInteractionListener, Term2.OnFragmentInteractionListener,Term3.OnFragmentInteractionListener{
+    Toast toast;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_overview);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Term 1"));
         tabLayout.addTab(tabLayout.newTab().setText("Term 2"));
         tabLayout.addTab(tabLayout.newTab().setText("Term 3"));
@@ -27,6 +33,11 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                int position = tab.getPosition();
+                toast.makeText(getApplicationContext(),"The tab position is "+ position,Toast.LENGTH_SHORT).show();
+                /*Intent intent = new Intent(CourseOverview.this, RecyclerViewAdapter.class);
+                intent.putExtra("Tab Number",position);
+                startActivity(intent);*/
             }
 
             @Override
@@ -45,4 +56,13 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
+    /*public static String getTabNumber(int position) {
+        String tabNumber = Integer.toString(position);
+        return tabNumber;
+    }*/
+
+
+
 }
