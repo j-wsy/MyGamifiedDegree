@@ -26,6 +26,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private List<Course> courseList;
     Dialog dialog;
     Toast toast;
+    DbHelper dbHelper;
 
     public RecyclerViewAdapter(Context mContext, List<Course> mData) {
         this.mContext = mContext;
@@ -44,8 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        //Intent intent = ((CourseOverview) mContext).getIntent();
-        //final String tabNumber = intent.getStringExtra("Tab Number");
+        dbHelper = new DbHelper(mContext);
         Course course = courseList.get(position);
         holder.courseTitle.setText(course.getCourseTitle());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
@@ -56,25 +56,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     dialog = new Dialog(mContext);
                     dialog.setContentView(R.layout.activity_course_information);
                     ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
-                    TextView courseTitle = (TextView) dialog.findViewById(R.id.courseTitle);
+                    final TextView courseTitle = (TextView) dialog.findViewById(R.id.courseTitle);
                     TextView courseDescription = (TextView) dialog.findViewById(R.id.courseDescription);
                     TextView assessmentStructure = (TextView) dialog.findViewById(R.id.assessmentStructure);
-                    courseTitle.setText(courseList.get(position).getCourseTitle());
+                    final String course = courseList.get(position).getCourseTitle();
+                    courseTitle.setText(course);
                     courseDescription.setText(courseList.get(position).getCourseDescription());
                     assessmentStructure.setText(courseList.get(position).getAssessmentStructure());
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.show();
                     Button addButton = (Button) dialog.findViewById(R.id.addButton);
-                    /*addButton.setOnClickListener(new View.OnClickListener() {
+                    addButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick (View v) {
-                            if (tabNumber =="1"){
+                            int tabNumber = CourseOverview.getTabNumber();
+                            dbHelper.updateIsCompleted(course);
+                            if (tabNumber == 0){
+                                String termSelected = "T1";
+                                dbHelper.updateTerm(course,termSelected);
                                 toast.makeText(mContext,"The tab position is 1", Toast.LENGTH_SHORT).show();
-                            }else if (tabNumber =="2"){
+                            }else if (tabNumber == 1){
+                                String termSelected = "T2";
+                                dbHelper.updateTerm(course,termSelected);
                                 toast.makeText(mContext,"The tab position is 2", Toast.LENGTH_SHORT).show();
                             }
+
+                            dialog.dismiss();
                         }
-                    });*/
+                    });
 
                     closeButton.setOnClickListener(new View.OnClickListener() {
                         @Override

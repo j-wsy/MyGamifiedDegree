@@ -1,5 +1,6 @@
 package com.example.juzza.mygamifieddegree;
 
+
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,10 +32,12 @@ public class Term1 extends Fragment {
     RecyclerView recyclerView;
     RecyclerView recyclerView2;
     RecyclerView recyclerView3;
+    RecyclerView recyclerView4;
     RecyclerViewAdapter adapter;
     List<Course> courseList;
     List<Course> courseList2;
     List<Course> courseList3;
+    List<Course> courseList4;
 
 
 
@@ -106,6 +109,15 @@ public class Term1 extends Fragment {
         RecyclerViewAdapter adapter2 = new RecyclerViewAdapter(getActivity(),courseList2);
         recyclerView2.setAdapter(adapter2);
 
+        //Initialise fourth recyclerview
+        courseList4 = new ArrayList<>();
+        recyclerView4 = rootView.findViewById(R.id.recyclerView4);
+        recyclerView4.setHasFixedSize(true);
+        recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        courseList4 = dbHelper.getAllT1Courses();
+        RecyclerViewAdapter adapter4 = new RecyclerViewAdapter(getActivity(),courseList4);
+        recyclerView4.setAdapter(adapter4);
+
         //Initialise spinner and third recyclerview
         Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_expandable_list_item_1,
@@ -141,6 +153,7 @@ public class Term1 extends Fragment {
 
             }
         });
+
         return rootView;
 
     }

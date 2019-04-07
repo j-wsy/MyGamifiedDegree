@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class CourseOverview extends AppCompatActivity implements Term1.OnFragmentInteractionListener, Term2.OnFragmentInteractionListener,Term3.OnFragmentInteractionListener{
     Toast toast;
     TabLayout tabLayout;
+    static int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +34,8 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                int position = tab.getPosition();
+                position = tab.getPosition();
                 toast.makeText(getApplicationContext(),"The tab position is "+ position,Toast.LENGTH_SHORT).show();
-                /*Intent intent = new Intent(CourseOverview.this, RecyclerViewAdapter.class);
-                intent.putExtra("Tab Number",position);
-                startActivity(intent);*/
             }
 
             @Override
@@ -57,12 +55,8 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
 
     }
 
-
-    /*public static String getTabNumber(int position) {
-        String tabNumber = Integer.toString(position);
-        return tabNumber;
-    }*/
-
-
+    public static int getTabNumber() {
+        return position;
+    }
 
 }

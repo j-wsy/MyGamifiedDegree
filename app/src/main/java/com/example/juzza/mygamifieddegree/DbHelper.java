@@ -18,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private Context mContext;
 
     //DB version, table and database name
-    private static final int DB_VERSION = 7;
+    private static final int DB_VERSION = 3;
     private static final String DB_NAME = "CoursesDb";
     private static final String DB_TABLE = "Courses";
 
@@ -133,7 +133,7 @@ public class DbHelper extends SQLiteOpenHelper {
         List <Course> courseList = new ArrayList<Course>();
 
         dbase = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE type = 'Core'";
+        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE type = 'Core' AND completed = 0";
         Cursor cursor = dbase.rawQuery(selectQuery,null);
         rowCount = cursor.getCount();
 
@@ -160,7 +160,7 @@ public class DbHelper extends SQLiteOpenHelper {
         List <Course> courseList = new ArrayList<Course>();
 
         dbase = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE faculty = 'Arts' AND type ='General Education'";
+        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE faculty = 'Arts' AND type ='General Education' AND completed = 0";
         Cursor cursor = dbase.rawQuery(selectQuery,null);
         rowCount = cursor.getCount();
 
@@ -188,7 +188,7 @@ public class DbHelper extends SQLiteOpenHelper {
         List <Course> courseList = new ArrayList<Course>();
 
         dbase = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE faculty = 'Science' AND type ='General Education'";
+        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE faculty = 'Science' AND type ='General Education' AND completed =0";
         Cursor cursor = dbase.rawQuery(selectQuery,null);
         rowCount = cursor.getCount();
 
@@ -216,7 +216,7 @@ public class DbHelper extends SQLiteOpenHelper {
         List <Course> courseList = new ArrayList<Course>();
 
         dbase = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE type = 'Elective'";
+        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE type = 'Elective' AND completed = 0";
         Cursor cursor = dbase.rawQuery(selectQuery,null);
         rowCount = cursor.getCount();
 
@@ -239,6 +239,49 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         return courseList;
     }
+
+    public void updateIsCompleted(String course){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + DB_TABLE + " SET " + IsCompleted +
+                " = '" + 1 + "' WHERE " + CourseTitle + " = '" + course + "'";
+        db.execSQL(query);
+    }
+
+    public void updateTerm(String course, String termSelected){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + DB_TABLE + " SET " + term +
+                " = '" + termSelected + "' WHERE " + CourseTitle + " = '" + course + "'";
+        db.execSQL(query);
+    }
+
+    public List <Course> getAllT1Courses(){
+        List <Course> courseList = new ArrayList<Course>();
+
+        dbase = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE term = 'T1' AND completed = 1";
+        Cursor cursor = dbase.rawQuery(selectQuery,null);
+        rowCount = cursor.getCount();
+
+        if(cursor.moveToFirst()){
+            do{
+                Course c = new Course();
+                c.setCourseTitle(cursor.getString(0));
+                c.setCourseFaculty(cursor.getString(1));
+                c.setCourseDescription(cursor.getString(2));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
+                c.setIsEnabled(cursor.getInt(5));
+                c.setIsCompleted(cursor.getInt(6));
+                c.setCourseError(cursor.getString(7));
+                c.setTerm(cursor.getString(8));
+                courseList.add(c);
+
+
+            }while (cursor.moveToNext());
+        }
+        return courseList;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
