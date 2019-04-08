@@ -54,6 +54,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactFragment()).commit();
+
+            case R.id.nav_rewardboard:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new RewardBoardFragment()).commit();
+
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

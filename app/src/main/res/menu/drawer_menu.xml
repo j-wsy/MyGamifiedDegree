@@ -17,6 +17,10 @@
             android:icon="@drawable/ic_message"
             android:title="chat"/>
 
+        <item android:id="@+id/nav_rewardboard"
+            android:icon="@drawable/ic_message"
+            android:title="Reward Board"/>
+
         <item android:id="@+id/nav_profile"
             android:icon="@drawable/ic_message"
             android:title="profile"/>
