@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("MyDegree");
 
-        actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
-        actionBar.setTitle(Html.fromHtml("<font color='#000000'>MyDegree </font>"));
+        //actionBar = getSupportActionBar();
+        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
+        //actionBar.setTitle(Html.fromHtml("<font color='#000000'> MyDegree </font>"));
 
 
 
