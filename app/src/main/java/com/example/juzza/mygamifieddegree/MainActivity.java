@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     Button mButtonLogin;
     TextView mTextViewRegister;
     DatabaseHelper db;
+    Button testBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(registerIntent);
             }
         });
+        testBtn = findViewById(R.id.btntest);
+
 
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
