@@ -12,6 +12,6 @@ public class HomeActivity extends AppCompatActivity {
 
         //leslie
 
-        /henry
+        //henry 
     }
 }
