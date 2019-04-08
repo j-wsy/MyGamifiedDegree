@@ -3,4 +3,9 @@
     <color name="colorPrimary">#FFEE58</color>
     <color name="colorPrimaryDark">#FFEE58</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="textColor">#000000</color>
+    <color name="action_bar">#000000</color>
+    <color name="btColor">#FFEE58</color>
+
 </resources>
