@@ -57,7 +57,7 @@ public class MessageFragment extends Fragment {
         view.findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent level3 = new Intent(getActivity(), level3.class);
+                Intent level3 = new Intent(getActivity(), CourseOverview.class);
                 startActivity(level3);
 
             }
