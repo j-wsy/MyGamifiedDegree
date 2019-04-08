@@ -1,8 +1,12 @@
 package com.example.juzza.mygamifieddegree;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,12 +22,19 @@ public class RegisterActivity extends AppCompatActivity {
     TextView mTextViewRegister;
     DatabaseHelper db;
 
+    ActionBar actionBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        setTitle("Create Your Account");
+
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
+        actionBar.setTitle(Html.fromHtml("<font color='#000000'>Create Your Account </font>"));
 
         db=new DatabaseHelper(this);
         mTextUsername=findViewById(R.id.editText3);
