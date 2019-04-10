@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -75,6 +78,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 String termSelected = "T1";
                                 dbHelper.updateTerm(course,termSelected);
                                 toast.makeText(mContext,"The tab position is 1", Toast.LENGTH_SHORT).show();
+                                Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(0);
+                                FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction.detach(fragment);
+                                fragmentTransaction.attach(fragment);
+                                fragmentTransaction.commit();
+
                             }else if (tabNumber == 1){
                                 String termSelected = "T2";
                                 dbHelper.updateTerm(course,termSelected);

@@ -14,19 +14,11 @@ import android.widget.Toast;
 public class MessageFragment extends Fragment {
 
 
-  // mainpage
-
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
-
-        return inflater.inflate(R.layout.fragment_message,container,false);
-
-
+        return inflater.inflate(R.layout.fragment_message, container, false);
 
 
     }
@@ -35,26 +27,8 @@ public class MessageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(),"123123",Toast.LENGTH_LONG).show();
-                Intent level3 = new Intent(getActivity(), level3.class);
-                startActivity(level3);
 
-            }
-        });
-
-        view.findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent level3 = new Intent(getActivity(), level3.class);
-                startActivity(level3);
-
-            }
-        });
-
-        view.findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent level3 = new Intent(getActivity(), CourseOverview.class);

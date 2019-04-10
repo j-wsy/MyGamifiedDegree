@@ -8,13 +8,6 @@
     android:background="@color/backgroundColor">
 
     
-    <Button
-        android:id="@+id/btntest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        tools:ignore="MissingConstraints" />
-    
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
