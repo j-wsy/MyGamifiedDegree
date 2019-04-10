@@ -14,6 +14,29 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp">
 
+        <!-- Selected Courses -->
+        <TextView
+            android:id="@+id/selectedView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="10dp"
+            android:text="Selected Courses"
+            android:textColor="@color/lightGrey"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/selectedView"
+            android:layout_marginTop="20dp">
+
+        </android.support.v7.widget.RecyclerView>
+
         <!-- Course Courses -->
         <TextView
             android:id="@+id/coreView"
@@ -21,12 +44,12 @@
             android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="30dp"
             android:text="Core Courses"
             android:textColor="@color/lightGrey"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/recyclerView4" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -36,6 +59,63 @@
             android:layout_marginTop="20dp">
 
         </android.support.v7.widget.RecyclerView>
+
+        <!-- Electives -->
+        <TextView
+            android:id="@+id/electiveView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="30dp"
+            android:text="Electives"
+            android:textColor="@color/lightGrey"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/electiveView"
+            android:layout_marginTop="20dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <!-- Gen Ed -->
+        <TextView
+            android:id="@+id/generalView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="30dp"
+            android:text="General Education"
+            android:textColor="@color/lightGrey"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView2" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/generalView">
+
+        </Spinner>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            android:layout_marginTop="20dp">
+
+        </android.support.v7.widget.RecyclerView>
+
 
     </android.support.constraint.ConstraintLayout>
 

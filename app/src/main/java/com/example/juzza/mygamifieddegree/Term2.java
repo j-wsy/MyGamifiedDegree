@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +28,19 @@ import java.util.List;
  */
 public class Term2 extends Fragment {
 
-    RecyclerView recyclerView;
-    RecyclerViewAdapter adapter;
-    List<Course> courseList;
+    static RecyclerView recyclerView;
+    RecyclerView recyclerView2;
+    RecyclerView recyclerView3;
+    RecyclerView recyclerView4;
+    static RecyclerViewAdapter adapter;
+    RecyclerViewAdapter adapter2;
+    RecyclerViewAdapter adapter3;
+    RecyclerViewAdapter adapter4;
+    static List<Course> courseList;
+    List<Course> courseList2;
+    List<Course> courseList3;
+    List<Course> courseList4;
+    static DbHelper dbHelper;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -77,21 +90,71 @@ public class Term2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        final View rootView = inflater.inflate(R.layout.fragment_term2, container, false);
+
+        //Initialise first recyclerview
         courseList = new ArrayList<>();
-        View rootView = inflater.inflate(R.layout.fragment_term2, container, false);
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        //courseList.add(new Course("INFS 1609", R.drawable.infs1609));
-        //courseList.add(new Course("INFS 2603", R.drawable.infs2603));
-        //courseList.add(new Course("INFS 1609", R.drawable.infs1609));
-        //courseList.add(new Course("INFS 2603", R.drawable.infs2603));
-
-        DbHelper dbHelper = new DbHelper(getActivity());
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        dbHelper = new DbHelper(getActivity());
         courseList = dbHelper.getAllCoreCourses();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(),courseList);
+        adapter = new RecyclerViewAdapter(getActivity(), courseList);
         recyclerView.setAdapter(adapter);
+
+        //Initialise second recyclerview
+        courseList2 = new ArrayList<>();
+        recyclerView2 = rootView.findViewById(R.id.recyclerView2);
+        recyclerView2.setHasFixedSize(true);
+        recyclerView2.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        courseList2 = dbHelper.getAllElectiveCourses();
+        adapter2 = new RecyclerViewAdapter(getActivity(), courseList2);
+        recyclerView2.setAdapter(adapter2);
+
+        //Initialise fourth recyclerview
+        courseList4 = new ArrayList<>();
+        recyclerView4 = rootView.findViewById(R.id.recyclerView4);
+        recyclerView4.setHasFixedSize(true);
+        recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        courseList4 = dbHelper.getAllT2Courses();
+        adapter4 = new RecyclerViewAdapter(getActivity(), courseList4);
+        recyclerView4.setAdapter(adapter4);
+
+        //Initialise spinner and third recyclerview
+        Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_expandable_list_item_1,
+                getResources().getStringArray(R.array.faculty));
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                if (selectedItem.equals("Arts and Social Science")) {
+                    courseList3 = new ArrayList<>();
+                    recyclerView3 = rootView.findViewById(R.id.recyclerView3);
+                    recyclerView3.setHasFixedSize(true);
+                    recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                    courseList3 = dbHelper.getArtsCourses();
+                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
+                    recyclerView3.setAdapter(adapter3);
+                } else {
+                    courseList3 = new ArrayList<>();
+                    recyclerView3 = rootView.findViewById(R.id.recyclerView3);
+                    recyclerView3.setHasFixedSize(true);
+                    recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                    courseList3 = dbHelper.getScienceCourses();
+                    adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
+                    recyclerView3.setAdapter(adapter3);
+                }
+            } // to close the onItemSelected
+
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         return rootView;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -117,6 +180,7 @@ public class Term2 extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this

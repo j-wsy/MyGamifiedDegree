@@ -95,9 +95,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     });
 
                     closeButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
                         }
 
                     });

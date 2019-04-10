@@ -282,6 +282,61 @@ public class DbHelper extends SQLiteOpenHelper {
         return courseList;
     }
 
+    public List <Course> getAllT2Courses(){
+        List <Course> courseList = new ArrayList<Course>();
+
+        dbase = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE term = 'T2' AND completed = 1";
+        Cursor cursor = dbase.rawQuery(selectQuery,null);
+        rowCount = cursor.getCount();
+
+        if(cursor.moveToFirst()){
+            do{
+                Course c = new Course();
+                c.setCourseTitle(cursor.getString(0));
+                c.setCourseFaculty(cursor.getString(1));
+                c.setCourseDescription(cursor.getString(2));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
+                c.setIsEnabled(cursor.getInt(5));
+                c.setIsCompleted(cursor.getInt(6));
+                c.setCourseError(cursor.getString(7));
+                c.setTerm(cursor.getString(8));
+                courseList.add(c);
+
+
+            }while (cursor.moveToNext());
+        }
+        return courseList;
+    }
+
+    public List <Course> getAllT3Courses(){
+        List <Course> courseList = new ArrayList<Course>();
+
+        dbase = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM "+DB_TABLE+" WHERE term = 'T3' AND completed = 1";
+        Cursor cursor = dbase.rawQuery(selectQuery,null);
+        rowCount = cursor.getCount();
+
+        if(cursor.moveToFirst()){
+            do{
+                Course c = new Course();
+                c.setCourseTitle(cursor.getString(0));
+                c.setCourseFaculty(cursor.getString(1));
+                c.setCourseDescription(cursor.getString(2));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
+                c.setIsEnabled(cursor.getInt(5));
+                c.setIsCompleted(cursor.getInt(6));
+                c.setCourseError(cursor.getString(7));
+                c.setTerm(cursor.getString(8));
+                courseList.add(c);
+
+
+            }while (cursor.moveToNext());
+        }
+        return courseList;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

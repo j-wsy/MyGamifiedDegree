@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_assignment_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_thumb_up_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,12 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_message" />
-                            <entry key="sourceFile" value="$USER_HOME$" />
+                            <entry key="color" value="2196f3" />
+                            <entry key="height" value="96" />
+                            <entry key="outputName" value="ic_thumb_up_black_96dp" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\Jade Soo" />
+                            <entry key="width" value="96" />
                           </map>
                         </option>
                       </PersistentState>
