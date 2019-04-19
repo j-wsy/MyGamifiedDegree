@@ -37,6 +37,18 @@
 
         </android.support.v7.widget.RecyclerView>
 
+        <!-- Button-->
+        <Button
+            android:id="@+id/enrolButton"
+            android:text="Enrol"
+            android:background="@drawable/rounded_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="235dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerView4"
+            />
+
         <!-- Course Courses -->
         <TextView
             android:id="@+id/coreView"
@@ -44,12 +56,12 @@
             android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:text="Core Courses"
             android:textColor="@color/lightGrey"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recyclerView4" />
+            app:layout_constraintTop_toBottomOf="@id/enrolButton" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -118,5 +130,4 @@
 
 
     </android.support.constraint.ConstraintLayout>
-
 </ScrollView>

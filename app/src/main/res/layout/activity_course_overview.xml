@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
+    android:id="@+id/course_container"
     tools:context=".CourseOverview">
 
     <android.support.v7.widget.Toolbar

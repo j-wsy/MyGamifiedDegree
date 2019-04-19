@@ -8,6 +8,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +20,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -44,9 +50,9 @@ public class Term1 extends Fragment {
     List<Course> courseList3;
     List<Course> courseList4;
     Dialog dialog;
-    Context mContext;
-
-
+    List<String> t2Avail;
+    List<String> t2Unavail;
+    Toast toast;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -101,28 +107,28 @@ public class Term1 extends Fragment {
         courseList = new ArrayList<>();
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         final DbHelper dbHelper = new DbHelper(getActivity());
         courseList = dbHelper.getAllCoreCourses();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(),courseList);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), courseList);
         recyclerView.setAdapter(adapter);
 
         //Initialise second recyclerview
         courseList2 = new ArrayList<>();
         recyclerView2 = rootView.findViewById(R.id.recyclerView2);
         recyclerView2.setHasFixedSize(true);
-        recyclerView2.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        recyclerView2.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         courseList2 = dbHelper.getAllElectiveCourses();
-        RecyclerViewAdapter adapter2 = new RecyclerViewAdapter(getActivity(),courseList2);
+        RecyclerViewAdapter adapter2 = new RecyclerViewAdapter(getActivity(), courseList2);
         recyclerView2.setAdapter(adapter2);
 
         //Initialise fourth recyclerview
         courseList4 = new ArrayList<>();
         recyclerView4 = rootView.findViewById(R.id.recyclerView4);
         recyclerView4.setHasFixedSize(true);
-        recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         courseList4 = dbHelper.getAllT1Courses();
-        RecyclerViewAdapter adapter4 = new RecyclerViewAdapter(getActivity(),courseList4);
+        RecyclerViewAdapter adapter4 = new RecyclerViewAdapter(getActivity(), courseList4);
         recyclerView4.setAdapter(adapter4);
 
         //Initialise spinner and third recyclerview
@@ -131,32 +137,29 @@ public class Term1 extends Fragment {
                 getResources().getStringArray(R.array.faculty));
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                if(selectedItem.equals("Arts and Social Science"))
-                {
+                if (selectedItem.equals("Arts and Social Science")) {
                     courseList3 = new ArrayList<>();
                     recyclerView3 = rootView.findViewById(R.id.recyclerView3);
                     recyclerView3.setHasFixedSize(true);
-                    recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(),2));
+                    recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     courseList3 = dbHelper.getArtsCourses();
-                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(),courseList3);
+                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
                     recyclerView3.setAdapter(adapter3);
                 } else {
                     courseList3 = new ArrayList<>();
                     recyclerView3 = rootView.findViewById(R.id.recyclerView3);
                     recyclerView3.setHasFixedSize(true);
-                    recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(),2));
+                    recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     courseList3 = dbHelper.getScienceCourses();
-                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(),courseList3);
+                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
                     recyclerView3.setAdapter(adapter3);
                 }
             } // to close the onItemSelected
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -165,33 +168,95 @@ public class Term1 extends Fragment {
         Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
         enrolButton.setVisibility(View.INVISIBLE);
         int count = adapter4.getItemCount();
-        if (count==3) {
+        if (count == 3) {
             enrolButton.setVisibility(View.VISIBLE);
         }
         enrolButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final DbHelper dbHelper = new DbHelper(getActivity());
 
                 dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.course_progress);
                 ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
+                TextView remainingCourses = (TextView) dialog.findViewById(R.id.remainingCourses);
+                String remainingDesc = dbHelper.getRemainingCoreCourses() + " core(s)  \n" + dbHelper.getRemainingElectiveCourses() + " elective(s)\n" + dbHelper.getRemainingGeneralCourses() + " gen ed(s)";
+                remainingCourses.setText(remainingDesc);
                 closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
+
+                        final Dialog dialog2 = new Dialog(getActivity());
+                        dialog2.setContentView(R.layout.badge_notif);
+                        ImageView closeButton = (ImageView) dialog2.findViewById(R.id.closeButton);
+                        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog2.show();
+                        closeButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog2.dismiss();
+                            }
+                        });
+
+                        Button viewButton = (Button) dialog2.findViewById(R.id.viewButton);
+                        viewButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //Fragment fragment = new RewardBoardFragment();
+                                //FragmentTransaction fragmentTransaction = ((FragmentActivity) getActivity()).getSupportFragmentManager().beginTransaction();
+                                //fragmentTransaction.replace(R.id.course_container,fragment);
+                                //fragmentTransaction.addToBackStack(null);
+                                //fragmentTransaction.commit();
+                            }
+                        });
+
+                        t2Unavail = dbHelper.getT2RemUnavail();
+                        dbHelper.updateDisable(t2Unavail);
+                        if (dbHelper.getIsCompleted("INFS1602") == 1) {
+                            dbHelper.updatePrereq("INFS2621");
+                            dbHelper.updatePrereq("INFS3603");
+                            dbHelper.updatePrereq("INFS3617");
+                            dbHelper.updatePrereq("INFS2631");
+                            dbHelper.updatePrereq("INFS3632");
+                            if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                                dbHelper.updatePrereq("INFS2603");
+                            }
+                        } else if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                            dbHelper.updatePrereq("INFS2608");
+                            if (dbHelper.getIsCompleted("INFS1609") == 1) {
+                                dbHelper.updatePrereq("INFS2605");
+                            }
+                        }
+
+                        t2Avail = dbHelper.getT2RemAvail();
+                        dbHelper.updateEnable(t2Avail);
+                        int infs2621 = dbHelper.getIsEnabled("INFS2621");
+                        //int isEnabled = dbHelper.getIsEnabled("INFS2621");
+                        toast.makeText(getActivity(),"INFS2621 Enabled: " + infs2621, Toast.LENGTH_SHORT).show();
+                        //toast.makeText(getActivity(),"List: " + t2Avail, Toast.LENGTH_SHORT).show();
+                        Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
+                        FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.detach(fragment);
+                        fragmentTransaction.attach(fragment);
+                        fragmentTransaction.commit();
                     }
+
+
+                    ;
+
                 });
 
             }
 
+            ;
         });
 
         return rootView;
 
     }
-
 
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -233,3 +298,4 @@ public class Term1 extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 }
+

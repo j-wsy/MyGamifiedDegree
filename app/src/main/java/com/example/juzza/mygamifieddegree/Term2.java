@@ -1,9 +1,13 @@
 package com.example.juzza.mygamifieddegree;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +49,10 @@ public class Term2 extends Fragment {
     List<Course> courseList3;
     List<Course> courseList4;
     static DbHelper dbHelper;
+    Dialog dialog;
+    List<String> t3Avail;
+    List<String> t3Unavail;
+    Toast toast;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -151,6 +163,88 @@ public class Term2 extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+        });
+
+        //Button
+        Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
+        enrolButton.setVisibility(View.INVISIBLE);
+        int count = adapter4.getItemCount();
+        if (count == 3) {
+            enrolButton.setVisibility(View.VISIBLE);
+        }
+        enrolButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final DbHelper dbHelper = new DbHelper(getActivity());
+
+                dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.course_progress);
+                ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                TextView remainingCourses = (TextView) dialog.findViewById(R.id.remainingCourses);
+                String remainingDesc = dbHelper.getRemainingCoreCourses() + " core(s) \n" + dbHelper.getRemainingElectiveCourses() + " elective(s) \n" + dbHelper.getRemainingGeneralCourses() + " gen ed(s)";
+                remainingCourses.setText(remainingDesc);
+                closeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                        final Dialog dialog2 = new Dialog(getActivity());
+                        dialog2.setContentView(R.layout.badge_notif);
+                        ImageView closeButton = (ImageView) dialog2.findViewById(R.id.closeButton);
+                        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog2.show();
+                        closeButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog2.dismiss();
+                            }
+                        });
+
+                        Button viewButton = (Button) dialog2.findViewById(R.id.viewButton);
+                        viewButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                            }
+                        });
+
+                        t3Unavail = dbHelper.getT3RemUnavail();
+                        dbHelper.updateDisable(t3Unavail);
+
+                        if (dbHelper.getIsCompleted("INFS2603") ==1) {
+                            dbHelper.updatePrereq("INFS3604");
+                        }else if (dbHelper.getIsCompleted("INFS3634") ==1) {
+                            dbHelper.updatePrereq("INFS3605");
+                        }else if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                            dbHelper.updatePrereq("INFS3634");
+                        }else if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                            dbHelper.updatePrereq("INFS3830");
+                            dbHelper.updatePrereq("INFS3873");
+                        }
+
+
+                        t3Avail = dbHelper.getT3RemAvail();
+                        dbHelper.updateEnable(t3Avail);
+                        int infs1609 = dbHelper.getIsEnabled("INFS1609");
+                        //int isEnabled = dbHelper.getIsEnabled("INFS2621");
+                        toast.makeText(getActivity(),"INFS1609 Enabled: " + infs1609, Toast.LENGTH_SHORT).show();
+                        //toast.makeText(getActivity(),"List: " + t2Avail, Toast.LENGTH_SHORT).show();
+                        Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(2);
+                        FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.detach(fragment);
+                        fragmentTransaction.attach(fragment);
+                        fragmentTransaction.commit();
+                    }
+
+
+                    ;
+
+                });
+
+            }
+
+            ;
         });
 
         return rootView;

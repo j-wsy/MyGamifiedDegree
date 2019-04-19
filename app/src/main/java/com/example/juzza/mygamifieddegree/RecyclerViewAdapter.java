@@ -68,6 +68,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     assessmentStructure.setText(courseList.get(position).getAssessmentStructure());
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.show();
+
+
                     Button addButton = (Button) dialog.findViewById(R.id.addButton);
                     addButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -77,7 +79,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             if (tabNumber == 0){
                                 String termSelected = "T1";
                                 dbHelper.updateTerm(course,termSelected);
-                                toast.makeText(mContext,"The tab position is 1", Toast.LENGTH_SHORT).show();
                                 Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(0);
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.detach(fragment);
@@ -87,7 +88,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             }else if (tabNumber == 1){
                                 String termSelected = "T2";
                                 dbHelper.updateTerm(course,termSelected);
-                                toast.makeText(mContext,"The tab position is 2", Toast.LENGTH_SHORT).show();
+                                Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(1);
+                                FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction.detach(fragment);
+                                fragmentTransaction.attach(fragment);
+                                fragmentTransaction.commit();
+
+                            }else if (tabNumber == 2) {
+                                String termSelected = "T3";
+                                dbHelper.updateTerm(course,termSelected);
+                                Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(2);
+                                FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction.detach(fragment);
+                                fragmentTransaction.attach(fragment);
+                                fragmentTransaction.commit();
                             }
 
                             dialog.dismiss();

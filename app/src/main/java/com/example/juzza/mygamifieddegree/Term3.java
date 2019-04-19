@@ -1,9 +1,15 @@
 package com.example.juzza.mygamifieddegree;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +51,11 @@ public class Term3 extends Fragment {
     List<Course> courseList3;
     List<Course> courseList4;
     static DbHelper dbHelper;
+    Dialog dialog;
+    List<String> t1Avail;
+    List<String> t1Unavail;
+    Toast toast;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -64,11 +79,11 @@ public class Term3 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Term2.
+     * @return A new instance of fragment Term3.
      */
     // TODO: Rename and change types and number of parameters
-    public static Term2 newInstance(String param1, String param2) {
-        Term2 fragment = new Term2();
+    public static Term3 newInstance(String param1, String param2) {
+        Term3 fragment = new Term3();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -90,7 +105,7 @@ public class Term3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View rootView = inflater.inflate(R.layout.fragment_term2, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_term3, container, false);
 
         //Initialise first recyclerview
         courseList = new ArrayList<>();
@@ -153,6 +168,87 @@ public class Term3 extends Fragment {
             }
         });
 
+        //Button
+        Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
+        enrolButton.setVisibility(View.INVISIBLE);
+        int count = adapter4.getItemCount();
+        if (count == 3) {
+            enrolButton.setVisibility(View.VISIBLE);
+        }
+        enrolButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final DbHelper dbHelper = new DbHelper(getActivity());
+
+                dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.course_progress);
+                ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                TextView remainingCourses = (TextView) dialog.findViewById(R.id.remainingCourses);
+                String remainingDesc = dbHelper.getRemainingCoreCourses() + " core(s) \n" + dbHelper.getRemainingElectiveCourses() + " elective(s) \n" + dbHelper.getRemainingGeneralCourses() + " gen ed(s)";
+                remainingCourses.setText(remainingDesc);
+                closeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                        final Dialog dialog2 = new Dialog(getActivity());
+                        dialog2.setContentView(R.layout.badge_notif);
+                        ImageView closeButton = (ImageView) dialog2.findViewById(R.id.closeButton);
+                        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog2.show();
+                        closeButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog2.dismiss();
+                            }
+                        });
+
+                        Button viewButton = (Button) dialog2.findViewById(R.id.viewButton);
+                        viewButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                            }
+                        });
+
+                        t1Unavail = dbHelper.getT1RemUnavail();
+                        dbHelper.updateDisable(t1Unavail);
+
+                        if (dbHelper.getIsCompleted("INFS2603") ==1) {
+                            dbHelper.updatePrereq("INFS3604");
+                        }else if (dbHelper.getIsCompleted("INFS3634") ==1) {
+                            dbHelper.updatePrereq("INFS3605");
+                        }else if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                            dbHelper.updatePrereq("INFS3634");
+                        }else if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                            dbHelper.updatePrereq("INFS3830");
+                            dbHelper.updatePrereq("INFS3873");
+                        }
+
+
+                        t1Avail = dbHelper.getT1RemAvail();
+                        dbHelper.updateEnable(t1Avail);
+
+                        Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(2);
+                        FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                        Fragment fragment2 = new MessageFragment();
+                        fragmentTransaction.detach(fragment);
+                        fragmentTransaction.attach(fragment2);
+                        fragmentTransaction.commit();
+                    }
+
+
+                    ;
+
+                });
+
+            }
+
+            ;
+        });
+
+
         return rootView;
 
     }
@@ -167,8 +263,8 @@ public class Term3 extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Term2.OnFragmentInteractionListener) {
-            mListener = (Term3.OnFragmentInteractionListener) context;
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
