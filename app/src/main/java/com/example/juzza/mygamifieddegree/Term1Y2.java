@@ -204,11 +204,12 @@ public class Term1Y2 extends Fragment {
                         viewButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                //Fragment fragment = new RewardBoardFragment();
-                                //FragmentTransaction fragmentTransaction = ((FragmentActivity) getActivity()).getSupportFragmentManager().beginTransaction();
-                                //fragmentTransaction.replace(R.id.course_container,fragment);
-                                //fragmentTransaction.addToBackStack(null);
-                                //fragmentTransaction.commit();
+                                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                                Fragment fragment = new RewardBoardFragment();
+                                fragmentTransaction.replace(R.id.course_container,fragment);
+                                fragmentTransaction.addToBackStack(null);
+                                fragmentTransaction.commit();
+                                dialog2.dismiss();
                             }
                         });
 

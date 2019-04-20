@@ -216,8 +216,6 @@ public class Term1 extends Fragment {
 
                                 FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                                 Fragment fragment = new RewardBoardFragment();
-                                //fragmentTransaction.detach(fragment);
-                                //fragmentTransaction.attach(fragment2);
                                 fragmentTransaction.replace(R.id.course_container,fragment);
                                 fragmentTransaction.addToBackStack(null);
                                 fragmentTransaction.commit();

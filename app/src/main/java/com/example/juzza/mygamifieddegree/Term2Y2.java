@@ -39,10 +39,10 @@ public class Term2Y2 extends Fragment {
     RecyclerView recyclerView2;
     RecyclerView recyclerView3;
     RecyclerView recyclerView4;
-    static RecyclerViewAdapter adapter;
-    static RecyclerViewAdapter adapter2;
-    static RecyclerViewAdapter adapter3;
-    static RecyclerViewAdapter adapter4;
+    static RecyclerViewAdapterY2 adapter;
+    static RecyclerViewAdapterY2 adapter2;
+    static RecyclerViewAdapterY2 adapter3;
+    static RecyclerViewAdapterY2 adapter4;
     static List<Course> courseList;
     List<Course> courseList2;
     List<Course> courseList3;
@@ -110,7 +110,7 @@ public class Term2Y2 extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         dbHelper = new DbHelper(getActivity());
         courseList = dbHelper.getAllCoreCourses();
-        adapter = new RecyclerViewAdapter(getActivity(), courseList);
+        adapter = new RecyclerViewAdapterY2(getActivity(), courseList);
         recyclerView.setAdapter(adapter);
 
         //Initialise second recyclerview
@@ -119,7 +119,7 @@ public class Term2Y2 extends Fragment {
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         courseList2 = dbHelper.getAllElectiveCourses();
-        adapter2 = new RecyclerViewAdapter(getActivity(), courseList2);
+        adapter2 = new RecyclerViewAdapterY2(getActivity(), courseList2);
         recyclerView2.setAdapter(adapter2);
 
         //Initialise fourth recyclerview
@@ -128,7 +128,7 @@ public class Term2Y2 extends Fragment {
         recyclerView4.setHasFixedSize(true);
         recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         courseList4 = dbHelper.getAllT2Y2Courses();
-        adapter4 = new RecyclerViewAdapter(getActivity(), courseList4);
+        adapter4 = new RecyclerViewAdapterY2(getActivity(), courseList4);
         recyclerView4.setAdapter(adapter4);
 
         //Initialise spinner and third recyclerview
@@ -154,7 +154,7 @@ public class Term2Y2 extends Fragment {
                     recyclerView3.setHasFixedSize(true);
                     recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     courseList3 = dbHelper.getScienceCourses();
-                    adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
+                    adapter3 = new RecyclerViewAdapterY2(getActivity(), courseList3);
                     recyclerView3.setAdapter(adapter3);
                 }
             } // to close the onItemSelected

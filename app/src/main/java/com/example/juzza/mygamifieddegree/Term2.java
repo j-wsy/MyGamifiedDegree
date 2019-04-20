@@ -206,6 +206,12 @@ public class Term2 extends Fragment {
                         viewButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                                Fragment fragment = new RewardBoardFragment();
+                                fragmentTransaction.replace(R.id.course_container,fragment);
+                                fragmentTransaction.addToBackStack(null);
+                                fragmentTransaction.commit();
+                                dialog2.dismiss();
                             }
                         });
 
