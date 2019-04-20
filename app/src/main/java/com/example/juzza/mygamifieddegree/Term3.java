@@ -43,9 +43,9 @@ public class Term3 extends Fragment {
     RecyclerView recyclerView3;
     RecyclerView recyclerView4;
     static RecyclerViewAdapter adapter;
-    RecyclerViewAdapter adapter2;
-    RecyclerViewAdapter adapter3;
-    RecyclerViewAdapter adapter4;
+    static RecyclerViewAdapter adapter2;
+    static RecyclerViewAdapter adapter3;
+    static RecyclerViewAdapter adapter4;
     static List<Course> courseList;
     List<Course> courseList2;
     List<Course> courseList3;
@@ -150,7 +150,7 @@ public class Term3 extends Fragment {
                     recyclerView3.setHasFixedSize(true);
                     recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     courseList3 = dbHelper.getArtsCourses();
-                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
+                    adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
                     recyclerView3.setAdapter(adapter3);
                 } else {
                     courseList3 = new ArrayList<>();
@@ -237,18 +237,28 @@ public class Term3 extends Fragment {
                             if (dbHelper.getIsCompleted("INFS1603") == 1) {
                                 dbHelper.updatePrereq("INFS2603");
                             }
-                        } else if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS1603") == 1) {
                             dbHelper.updatePrereq("INFS2608");
                             if (dbHelper.getIsCompleted("INFS1609") == 1) {
                                 dbHelper.updatePrereq("INFS2605");
                             }
-                        } else if (dbHelper.getIsCompleted("INFS2603") ==1) {
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS2603") ==1) {
                             dbHelper.updatePrereq("INFS3604");
-                        }else if (dbHelper.getIsCompleted("INFS3634") ==1) {
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS3634") ==1) {
                             dbHelper.updatePrereq("INFS3605");
-                        }else if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
                             dbHelper.updatePrereq("INFS3634");
-                        }else if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
                             dbHelper.updatePrereq("INFS3830");
                             dbHelper.updatePrereq("INFS3873");
                         }
@@ -256,6 +266,12 @@ public class Term3 extends Fragment {
 
                         t1Avail = dbHelper.getT1RemAvail();
                         dbHelper.updateEnable(t1Avail);
+                        int infs2621 = dbHelper.getIsEnabled("INFS2605");
+                        int infs2603 = dbHelper.getIsEnabled("INFS2603");
+                        int infs1609 = dbHelper.getIsCompleted("INFS1609");
+                        int infs1603 = dbHelper.getIsCompleted("INFS1603");
+                        int infs2605pre = dbHelper.getPrereq("INFS2605");
+                        toast.makeText(getActivity(),"INFS2605 Enabled: " + infs2621 + " INFS2603: " + infs2603 + " INFS1609: " + infs1609+ " INFS1603: " + infs1603 + " 2605 Pre: " + infs2605pre, Toast.LENGTH_SHORT).show();
 
                         //Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
                         FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();

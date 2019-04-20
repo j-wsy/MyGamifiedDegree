@@ -328,6 +328,20 @@ public class DbHelper extends SQLiteOpenHelper {
         return isComplete;
     }
 
+    public int getPrereq(String course) {
+        dbase = this.getReadableDatabase();
+        int prereq;
+        String selectQuery = "SELECT prereq FROM " + DB_TABLE + " WHERE " + CourseTitle + "='" + course + "'";
+        Cursor cursor = dbase.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            prereq = cursor.getInt(cursor.getColumnIndex("prereq"));
+        } else {
+            prereq = 2;
+        }
+        //int isComplete = cursor.getInt(cursor.getColumnIndex("completed"));
+        return prereq;
+    }
+
     public int getIsEnabled(String course) {
         dbase = this.getReadableDatabase();
         int isComplete;

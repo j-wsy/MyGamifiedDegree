@@ -211,17 +211,40 @@ public class Term2Y2 extends Fragment {
                         t3Unavail = dbHelper.getT3RemUnavail();
                         dbHelper.updateDisable(t3Unavail);
 
+                        if (dbHelper.getIsCompleted("INFS1602") == 1) {
+                            dbHelper.updatePrereq("INFS2621");
+                            dbHelper.updatePrereq("INFS3603");
+                            dbHelper.updatePrereq("INFS3617");
+                            dbHelper.updatePrereq("INFS2631");
+                            dbHelper.updatePrereq("INFS3632");
+                            if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                                dbHelper.updatePrereq("INFS2603");
+                            }
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                            dbHelper.updatePrereq("INFS2608");
+                            if (dbHelper.getIsCompleted("INFS1609") == 1) {
+                                dbHelper.updatePrereq("INFS2605");
+                            }
+                        }
+
                         if (dbHelper.getIsCompleted("INFS2603") ==1) {
                             dbHelper.updatePrereq("INFS3604");
-                        }else if (dbHelper.getIsCompleted("INFS3634") ==1) {
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS3634") ==1) {
                             dbHelper.updatePrereq("INFS3605");
-                        }else if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
                             dbHelper.updatePrereq("INFS3634");
-                        }else if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
                             dbHelper.updatePrereq("INFS3830");
                             dbHelper.updatePrereq("INFS3873");
                         }
-
 
                         t3Avail = dbHelper.getT3RemAvail();
                         dbHelper.updateEnable(t3Avail);

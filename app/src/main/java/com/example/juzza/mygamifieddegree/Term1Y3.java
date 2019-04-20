@@ -224,13 +224,31 @@ public class Term1Y3 extends Fragment {
                             if (dbHelper.getIsCompleted("INFS1603") == 1) {
                                 dbHelper.updatePrereq("INFS2603");
                             }
-                        } else if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS1603") == 1) {
                             dbHelper.updatePrereq("INFS2608");
                             if (dbHelper.getIsCompleted("INFS1609") == 1) {
                                 dbHelper.updatePrereq("INFS2605");
                             }
                         }
 
+                        if (dbHelper.getIsCompleted("INFS2603") ==1) {
+                            dbHelper.updatePrereq("INFS3604");
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS3634") ==1) {
+                            dbHelper.updatePrereq("INFS3605");
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                            dbHelper.updatePrereq("INFS3634");
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                            dbHelper.updatePrereq("INFS3830");
+                            dbHelper.updatePrereq("INFS3873");
+                        }
                         t2Avail = dbHelper.getT2RemAvail();
                         dbHelper.updateEnable(t2Avail);
                         Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);

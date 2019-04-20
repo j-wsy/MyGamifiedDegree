@@ -92,6 +92,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             }else if (tabNumber == 1){
                                 String termSelected = "T2";
                                 dbHelper.updateTerm(course,termSelected);
+                                Term2.adapter.notifyDataSetChanged();
+                                Term2.adapter2.notifyDataSetChanged();
+                                Term2.adapter3.notifyDataSetChanged();
+                                Term2.adapter4.notifyDataSetChanged();
                                 Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(1);
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.detach(fragment);
@@ -101,6 +105,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             }else if (tabNumber == 2) {
                                 String termSelected = "T3";
                                 dbHelper.updateTerm(course,termSelected);
+                                Term3.adapter.notifyDataSetChanged();
+                                Term3.adapter2.notifyDataSetChanged();
+                                Term3.adapter3.notifyDataSetChanged();
+                                Term3.adapter4.notifyDataSetChanged();
                                 Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(1);
 
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();

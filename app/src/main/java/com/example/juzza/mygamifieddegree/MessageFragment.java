@@ -60,7 +60,7 @@ public class MessageFragment extends Fragment {
 
         });
 
-        view.findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 final DbHelper dbHelper = new DbHelper(getActivity());
                 int remainingCore = dbHelper.getRemainingCoreCourses();
@@ -69,12 +69,12 @@ public class MessageFragment extends Fragment {
                 int total = remainingCore + remainingElective + remainingGen;
 
                 if (total == 6) {
-                    Intent intent = new Intent(getActivity(), CourseOverviewY2.class);
+                    Intent intent = new Intent(getActivity(), CourseOverviewY3.class);
                     startActivity(intent);
                 }
 
                 else{
-                    toast.makeText(getActivity(), "This stage is locked. Please complete your Year 1 enrolment", Toast.LENGTH_SHORT).show();
+                    toast.makeText(getActivity(), "This stage is locked. Please complete your Year 2 enrolment", Toast.LENGTH_SHORT).show();
                 }
 
             }
