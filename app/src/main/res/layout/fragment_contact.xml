@@ -9,37 +9,59 @@
         android:id="@+id/textview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contact Fragment"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginLeft="126dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginRight="136dp"
+        android:text="Contact Us"
         android:textSize="30sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textview1"
-            android:paddingVertical="20dp"
-            android:paddingHorizontal="20dp"
-            android:text="Having issues with your progression planning?\n\nContact the UNSW Student Center with your enquiry via phone or e-mail!"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="95dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp"
+        android:text="Having issues with your progression planning?\n\nContact the UNSW Student Center with your enquiry via phone or e-mail!" />
 
 
+    <Button
+        android:id="@+id/buttoncall"
+        android:layout_width="251dp"
+        android:layout_height="98dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rounded_button"
+        android:text="Call Student Centre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/buttoncall"
-            android:layout_width="wrap_content"
-            android:layout_height="85dp"
-            android:layout_centerInParent="true"
-            android:text="Call Student Center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/buttonemail"
-            android:layout_width="wrap_content"
-            android:layout_height="85dp"
-            android:layout_below="@+id/buttoncall"
-            android:layout_centerHorizontal="true"
-            android:text="Email Student Center "
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/buttonemail"
+        android:layout_width="wrap_content"
+        android:layout_height="92dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="385dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginRight="79dp"
+        android:layout_marginBottom="126dp"
+        android:background="@drawable/rounded_button"
+        android:text="Email Student Centre "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 

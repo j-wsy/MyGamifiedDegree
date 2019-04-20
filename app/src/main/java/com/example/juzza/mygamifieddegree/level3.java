@@ -1,20 +1,33 @@
 package com.example.juzza.mygamifieddegree;
 
 import android.content.ClipData;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.DragEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.support.v7.app.ActionBar;
 
 public class level3 extends AppCompatActivity {
 
     TextView txt1,txt2,txt3,txt4;
 
+    ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level3);
+
+        setTitle("Level 3");
+
+
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
+        actionBar.setTitle(Html.fromHtml("<font color='#000000'> MyDegree </font>"));
 
         txt1=findViewById(R.id.txt1);
         txt2=findViewById(R.id.txt2);

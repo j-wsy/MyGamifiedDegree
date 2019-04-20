@@ -1,5 +1,7 @@
 package com.example.juzza.mygamifieddegree;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,11 +11,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Gravity;
 import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
 import android.view.MenuItem;
+import android.support.v7.app.ActionBar;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    ActionBar actionBar;
+
     private DrawerLayout drawer;
 
 
@@ -21,6 +27,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        setTitle("MyDegree");
+
+
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
+        actionBar.setTitle(Html.fromHtml("<font color='#000000'> MyDegree </font>"));
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -1,13 +1,16 @@
 package com.example.juzza.mygamifieddegree;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.widget.Toast;
 
 public class CourseOverview extends AppCompatActivity implements Term1.OnFragmentInteractionListener, Term2.OnFragmentInteractionListener,Term3.OnFragmentInteractionListener{
@@ -31,11 +34,20 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+            ActionBar actionBar = getSupportActionBar();
+
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 position = tab.getPosition();
                 toast.makeText(getApplicationContext(),"The tab position is "+ position,Toast.LENGTH_SHORT).show();
+
+                setTitle("My Course Overview");
+
+                actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
+                actionBar.setTitle(Html.fromHtml("<font color='#000000'> MyDegree </font>"));
+
             }
 
             @Override
@@ -47,6 +59,8 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
+
+
         });
     }
 

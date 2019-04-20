@@ -4,17 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/backgroundColor">
+    tools:context=".MainActivity">
 
-    
-    <Button
-        android:id="@+id/btntest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        tools:ignore="MissingConstraints" />
-    
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
@@ -95,9 +87,9 @@
         android:src="@drawable/unsw_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.049" />
 
 </android.support.constraint.ConstraintLayout>

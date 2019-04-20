@@ -32,9 +32,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         setTitle("Create Your Account");
 
-        //actionBar = getSupportActionBar();
-        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
-        //actionBar.setTitle(Html.fromHtml("<font color='#000000'>Create Your Account </font>"));
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
+        actionBar.setTitle(Html.fromHtml("<font color='#000000'>Create Your Account </font>"));
 
         db=new DatabaseHelper(this);
         mTextUsername=findViewById(R.id.editText3);
