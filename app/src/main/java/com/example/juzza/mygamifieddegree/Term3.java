@@ -230,11 +230,13 @@ public class Term3 extends Fragment {
                         t1Avail = dbHelper.getT1RemAvail();
                         dbHelper.updateEnable(t1Avail);
 
-                        Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
+                        //Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
                         FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                         Fragment fragment2 = new MessageFragment();
-                        fragmentTransaction.detach(fragment);
-                        fragmentTransaction.attach(fragment2);
+                        //fragmentTransaction.detach(fragment);
+                        //fragmentTransaction.attach(fragment2);
+                        fragmentTransaction.replace(R.id.course_container,fragment2);
+                        fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                     }
 
