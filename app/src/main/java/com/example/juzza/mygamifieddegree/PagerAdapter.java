@@ -1,5 +1,6 @@
 package com.example.juzza.mygamifieddegree;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -15,6 +16,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
         switch (position) {
 
             case 0:
@@ -33,9 +35,16 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         }
     }
 
+
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+
+    }
+
     @Override
     public int getCount() {
 
-        return mNoOfTabs;
+        return 3;
     }
 }

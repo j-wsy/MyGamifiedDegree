@@ -79,6 +79,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             if (tabNumber == 0){
                                 String termSelected = "T1";
                                 dbHelper.updateTerm(course,termSelected);
+                                Term1.adapter.notifyDataSetChanged();
+                                Term1.adapter2.notifyDataSetChanged();
+                                Term1.adapter3.notifyDataSetChanged();
+                                Term1.adapter4.notifyDataSetChanged();
                                 Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(0);
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.detach(fragment);
@@ -97,7 +101,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             }else if (tabNumber == 2) {
                                 String termSelected = "T3";
                                 dbHelper.updateTerm(course,termSelected);
-                                Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(2);
+                                Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(1);
+
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
@@ -135,8 +140,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }
             }
         });
-
-
     }
 
     @Override
@@ -153,13 +156,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public MyViewHolder(View itemView) {
 
             super(itemView);
-
-
             courseTitle = (TextView) itemView.findViewById(R.id.courseTitle);
             courseImage = (ImageView) itemView.findViewById(R.id.courseImage);
             cardview = (CardView) itemView.findViewById(R.id.cardview_id);
         }
-
     }
 
 }

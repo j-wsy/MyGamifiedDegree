@@ -44,7 +44,10 @@ public class Term1 extends Fragment {
     RecyclerView recyclerView2;
     RecyclerView recyclerView3;
     RecyclerView recyclerView4;
-    RecyclerViewAdapter adapter;
+    static RecyclerViewAdapter adapter;
+    static RecyclerViewAdapter adapter2;
+    static RecyclerViewAdapter adapter3;
+    static RecyclerViewAdapter adapter4;
     List<Course> courseList;
     List<Course> courseList2;
     List<Course> courseList3;
@@ -78,8 +81,8 @@ public class Term1 extends Fragment {
      * @return A new instance of fragment Term2.
      */
     // TODO: Rename and change types and number of parameters
-    public static Term2 newInstance(String param1, String param2) {
-        Term2 fragment = new Term2();
+    public static Term1 newInstance(String param1, String param2) {
+        Term1 fragment = new Term1();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -110,7 +113,7 @@ public class Term1 extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         final DbHelper dbHelper = new DbHelper(getActivity());
         courseList = dbHelper.getAllCoreCourses();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getActivity(), courseList);
+        adapter = new RecyclerViewAdapter(getActivity(), courseList);
         recyclerView.setAdapter(adapter);
 
         //Initialise second recyclerview
@@ -119,7 +122,7 @@ public class Term1 extends Fragment {
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         courseList2 = dbHelper.getAllElectiveCourses();
-        RecyclerViewAdapter adapter2 = new RecyclerViewAdapter(getActivity(), courseList2);
+        adapter2 = new RecyclerViewAdapter(getActivity(), courseList2);
         recyclerView2.setAdapter(adapter2);
 
         //Initialise fourth recyclerview
@@ -128,7 +131,7 @@ public class Term1 extends Fragment {
         recyclerView4.setHasFixedSize(true);
         recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         courseList4 = dbHelper.getAllT1Courses();
-        RecyclerViewAdapter adapter4 = new RecyclerViewAdapter(getActivity(), courseList4);
+        adapter4 = new RecyclerViewAdapter(getActivity(), courseList4);
         recyclerView4.setAdapter(adapter4);
 
         //Initialise spinner and third recyclerview
@@ -146,7 +149,7 @@ public class Term1 extends Fragment {
                     recyclerView3.setHasFixedSize(true);
                     recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     courseList3 = dbHelper.getArtsCourses();
-                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
+                    adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
                     recyclerView3.setAdapter(adapter3);
                 } else {
                     courseList3 = new ArrayList<>();
@@ -269,8 +272,8 @@ public class Term1 extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Term2.OnFragmentInteractionListener) {
-            mListener = (Term1.OnFragmentInteractionListener) context;
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

@@ -41,9 +41,9 @@ public class Term2 extends Fragment {
     RecyclerView recyclerView3;
     RecyclerView recyclerView4;
     static RecyclerViewAdapter adapter;
-    RecyclerViewAdapter adapter2;
-    RecyclerViewAdapter adapter3;
-    RecyclerViewAdapter adapter4;
+    static RecyclerViewAdapter adapter2;
+    static RecyclerViewAdapter adapter3;
+    static RecyclerViewAdapter adapter4;
     static List<Course> courseList;
     List<Course> courseList2;
     List<Course> courseList3;

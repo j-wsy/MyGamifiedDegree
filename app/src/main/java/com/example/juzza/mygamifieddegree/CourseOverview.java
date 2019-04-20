@@ -35,7 +35,18 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 position = tab.getPosition();
-                toast.makeText(getApplicationContext(),"The tab position is "+ position,Toast.LENGTH_SHORT).show();
+                viewPager.getAdapter().notifyDataSetChanged();
+                //toast.makeText(getApplicationContext(),"The tab position is "+ position,Toast.LENGTH_SHORT).show();
+                if (position == 0) {
+                    int fragno = getSupportFragmentManager().getFragments().size();
+                    toast.makeText(getApplicationContext(),"Fragment No: " + fragno, Toast.LENGTH_SHORT).show();
+                }  else if (position == 1) {
+                    int fragno = getSupportFragmentManager().getFragments().size();
+                    toast.makeText(getApplicationContext(),"Fragment No: " + fragno, Toast.LENGTH_SHORT).show();
+                } else if (position == 2) {
+                    int fragno = getSupportFragmentManager().getFragments().size();
+                    toast.makeText(getApplicationContext(),"Fragment No: " + fragno, Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -45,6 +56,9 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+                viewPager.getAdapter().notifyDataSetChanged();
+
 
             }
         });

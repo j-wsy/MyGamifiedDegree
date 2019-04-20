@@ -135,6 +135,7 @@ public class DbHelper extends SQLiteOpenHelper {
         values.put(prereq, c.getPrereq());
 
         dbase.insert(DB_TABLE, null, values);
+
     }
 
     public List<Course> getAllCoreCourses() {
@@ -197,6 +198,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
+
         return courseList;
     }
 
@@ -229,6 +231,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
+
         return courseList;
     }
 
@@ -261,6 +264,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
+
         return courseList;
     }
 
@@ -397,6 +401,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String query = "UPDATE " + DB_TABLE + " SET " + term +
                 " = '" + termSelected + "' WHERE " + CourseTitle + " = '" + course + "'";
         db.execSQL(query);
+
     }
 
     public List<Course> getAllT1Courses() {
@@ -460,6 +465,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
+
         return courseList;
     }
 
@@ -492,6 +498,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
+
         return courseList;
     }
 
@@ -527,7 +534,9 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         int completedCore = courseList.size();
         int remainingCore = coreRequirement - completedCore;
+
         return remainingCore;
+
     }
 
     public int getRemainingElectiveCourses() {
@@ -562,6 +571,7 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         int completedElective = courseList.size();
         int remainingElective = electiveRequirement - completedElective;
+
         return remainingElective;
     }
 
@@ -597,6 +607,7 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         int completedGeneral = courseList.size();
         int remainingGeneral = generalRequirement - completedGeneral;
+
         return remainingGeneral;
     }
 
@@ -611,6 +622,7 @@ public class DbHelper extends SQLiteOpenHelper {
             String uname = cursor.getString(cursor.getColumnIndex("title"));
             array.add(uname);
         }
+
 
         return array;
     }
@@ -628,6 +640,7 @@ public class DbHelper extends SQLiteOpenHelper {
             array.add(uname);
         }
 
+
         return array;
     }
 
@@ -642,6 +655,7 @@ public class DbHelper extends SQLiteOpenHelper {
             String uname = cursor.getString(cursor.getColumnIndex("title"));
             array.add(uname);
         }
+
 
         return array;
     }
@@ -725,6 +739,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
+
         return courseList;
     }
 
