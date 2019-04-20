@@ -212,7 +212,21 @@ public class Term2 extends Fragment {
                         t3Unavail = dbHelper.getT3RemUnavail();
                         dbHelper.updateDisable(t3Unavail);
 
-                        if (dbHelper.getIsCompleted("INFS2603") ==1) {
+                        if (dbHelper.getIsCompleted("INFS1602") == 1) {
+                            dbHelper.updatePrereq("INFS2621");
+                            dbHelper.updatePrereq("INFS3603");
+                            dbHelper.updatePrereq("INFS3617");
+                            dbHelper.updatePrereq("INFS2631");
+                            dbHelper.updatePrereq("INFS3632");
+                            if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                                dbHelper.updatePrereq("INFS2603");
+                            }
+                        } else if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                            dbHelper.updatePrereq("INFS2608");
+                            if (dbHelper.getIsCompleted("INFS1609") == 1) {
+                                dbHelper.updatePrereq("INFS2605");
+                            }
+                        }else if (dbHelper.getIsCompleted("INFS2603") ==1) {
                             dbHelper.updatePrereq("INFS3604");
                         }else if (dbHelper.getIsCompleted("INFS3634") ==1) {
                             dbHelper.updatePrereq("INFS3605");

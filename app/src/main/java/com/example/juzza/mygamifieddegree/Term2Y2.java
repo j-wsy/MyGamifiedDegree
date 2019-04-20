@@ -2,13 +2,11 @@ package com.example.juzza.mygamifieddegree;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,32 +28,30 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Term3.OnFragmentInteractionListener} interface
+ * {@link Term2Y2.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Term3#newInstance} factory method to
+ * Use the {@link Term2Y2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Term3 extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+public class Term2Y2 extends Fragment {
+
     static RecyclerView recyclerView;
     RecyclerView recyclerView2;
     RecyclerView recyclerView3;
     RecyclerView recyclerView4;
     static RecyclerViewAdapter adapter;
-    RecyclerViewAdapter adapter2;
-    RecyclerViewAdapter adapter3;
-    RecyclerViewAdapter adapter4;
+    static RecyclerViewAdapter adapter2;
+    static RecyclerViewAdapter adapter3;
+    static RecyclerViewAdapter adapter4;
     static List<Course> courseList;
     List<Course> courseList2;
     List<Course> courseList3;
     List<Course> courseList4;
     static DbHelper dbHelper;
     Dialog dialog;
-    List<String> t1Avail;
-    List<String> t1Unavail;
+    List<String> t3Avail;
+    List<String> t3Unavail;
     Toast toast;
-
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -67,9 +63,9 @@ public class Term3 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Term3.OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener mListener;
 
-    public Term3() {
+    public Term2Y2() {
         // Required empty public constructor
     }
 
@@ -79,11 +75,11 @@ public class Term3 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Term3.
+     * @return A new instance of fragment Term2.
      */
     // TODO: Rename and change types and number of parameters
-    public static Term3 newInstance(String param1, String param2) {
-        Term3 fragment = new Term3();
+    public static Term2Y2 newInstance(String param1, String param2) {
+        Term2Y2 fragment = new Term2Y2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -105,7 +101,7 @@ public class Term3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View rootView = inflater.inflate(R.layout.fragment_term3, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_term2, container, false);
 
         //Initialise first recyclerview
         courseList = new ArrayList<>();
@@ -131,7 +127,7 @@ public class Term3 extends Fragment {
         recyclerView4 = rootView.findViewById(R.id.recyclerView4);
         recyclerView4.setHasFixedSize(true);
         recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        courseList4 = dbHelper.getAllT3Courses();
+        courseList4 = dbHelper.getAllT2Y2Courses();
         adapter4 = new RecyclerViewAdapter(getActivity(), courseList4);
         recyclerView4.setAdapter(adapter4);
 
@@ -188,13 +184,6 @@ public class Term3 extends Fragment {
                 TextView remainingCourses = (TextView) dialog.findViewById(R.id.remainingCourses);
                 String remainingDesc = dbHelper.getRemainingCoreCourses() + " core(s) \n" + dbHelper.getRemainingElectiveCourses() + " elective(s) \n" + dbHelper.getRemainingGeneralCourses() + " gen ed(s)";
                 remainingCourses.setText(remainingDesc);
-                //newly added
-                int remainingCore = dbHelper.getRemainingCoreCourses();
-                int remainingElective = dbHelper.getRemainingElectiveCourses();
-                int remainingGen = dbHelper.getRemainingGeneralCourses();
-                int total = remainingCore + remainingElective + remainingGen;
-                toast.makeText(getActivity(),"Number completed: " + total, Toast.LENGTH_SHORT).show();
-
                 closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -219,24 +208,10 @@ public class Term3 extends Fragment {
                             }
                         });
 
-                        t1Unavail = dbHelper.getT1RemUnavail();
-                        dbHelper.updateDisable(t1Unavail);
+                        t3Unavail = dbHelper.getT3RemUnavail();
+                        dbHelper.updateDisable(t3Unavail);
 
-                        if (dbHelper.getIsCompleted("INFS1602") == 1) {
-                            dbHelper.updatePrereq("INFS2621");
-                            dbHelper.updatePrereq("INFS3603");
-                            dbHelper.updatePrereq("INFS3617");
-                            dbHelper.updatePrereq("INFS2631");
-                            dbHelper.updatePrereq("INFS3632");
-                            if (dbHelper.getIsCompleted("INFS1603") == 1) {
-                                dbHelper.updatePrereq("INFS2603");
-                            }
-                        } else if (dbHelper.getIsCompleted("INFS1603") == 1) {
-                            dbHelper.updatePrereq("INFS2608");
-                            if (dbHelper.getIsCompleted("INFS1609") == 1) {
-                                dbHelper.updatePrereq("INFS2605");
-                            }
-                        } else if (dbHelper.getIsCompleted("INFS2603") ==1) {
+                        if (dbHelper.getIsCompleted("INFS2603") ==1) {
                             dbHelper.updatePrereq("INFS3604");
                         }else if (dbHelper.getIsCompleted("INFS3634") ==1) {
                             dbHelper.updatePrereq("INFS3605");
@@ -248,16 +223,12 @@ public class Term3 extends Fragment {
                         }
 
 
-                        t1Avail = dbHelper.getT1RemAvail();
-                        dbHelper.updateEnable(t1Avail);
-
-                        //Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
+                        t3Avail = dbHelper.getT3RemAvail();
+                        dbHelper.updateEnable(t3Avail);
+                        Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(2);
                         FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                        Fragment fragment2 = new MessageFragment();
-                        //fragmentTransaction.detach(fragment);
-                        //fragmentTransaction.attach(fragment2);
-                        fragmentTransaction.replace(R.id.course_container,fragment2);
-                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.detach(fragment);
+                        fragmentTransaction.attach(fragment);
                         fragmentTransaction.commit();
                     }
 
@@ -270,7 +241,6 @@ public class Term3 extends Fragment {
 
             ;
         });
-
 
         return rootView;
 

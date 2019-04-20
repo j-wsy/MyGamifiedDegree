@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 public class MessageFragment extends Fragment {
 
+    Toast toast;
 
     @Nullable
     @Override
@@ -36,7 +37,87 @@ public class MessageFragment extends Fragment {
 
             }
         });
+
+
+        view.findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                final DbHelper dbHelper = new DbHelper(getActivity());
+                int remainingCore = dbHelper.getRemainingCoreCourses();
+                int remainingElective = dbHelper.getRemainingElectiveCourses();
+                int remainingGen = dbHelper.getRemainingGeneralCourses();
+                int total = remainingCore + remainingElective + remainingGen;
+
+                if (total == 15) {
+                    Intent intent = new Intent(getActivity(), CourseOverviewY2.class);
+                    startActivity(intent);
+                }
+
+                else{
+                    toast.makeText(getActivity(), "This stage is locked. Please complete your Year 1 enrolment", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        });
+
+        view.findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                final DbHelper dbHelper = new DbHelper(getActivity());
+                int remainingCore = dbHelper.getRemainingCoreCourses();
+                int remainingElective = dbHelper.getRemainingElectiveCourses();
+                int remainingGen = dbHelper.getRemainingGeneralCourses();
+                int total = remainingCore + remainingElective + remainingGen;
+
+                if (total == 6) {
+                    Intent intent = new Intent(getActivity(), CourseOverviewY2.class);
+                    startActivity(intent);
+                }
+
+                else{
+                    toast.makeText(getActivity(), "This stage is locked. Please complete your Year 1 enrolment", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        });
+
+        /*
+        final DbHelper dbHelper = new DbHelper(getActivity());
+        int remainingCore = dbHelper.getRemainingCoreCourses();
+        int remainingElective = dbHelper.getRemainingElectiveCourses();
+        int remainingGen = dbHelper.getRemainingGeneralCourses();
+        int total = remainingCore + remainingElective + remainingGen;
+
+        if (total == 9) {
+
+            view.findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), CourseOverviewY2.class);
+                    startActivity(intent);
+                }
+
+            });
+        }else {
+            toast.makeText(getActivity(), "This stage is locked. Please complete your Year 1 enrolment", Toast.LENGTH_SHORT).show();
+        }
+
+        if (total == 18) {
+
+            view.findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), CourseOverviewY2.class);
+                    startActivity(intent);
+                }
+
+            });
+        } else {
+            toast.makeText(getActivity(),"This stage is locked. Please complete your Year 2 enrolment",Toast.LENGTH_SHORT).show();
+        }
+
+        */
+        }
     }
-}
 
 

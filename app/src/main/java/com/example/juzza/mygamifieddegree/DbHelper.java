@@ -18,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private Context mContext;
 
     //DB version, table and database name
-    private static final int DB_VERSION = 5;
+    private static final int DB_VERSION = 6;
     private static final String DB_NAME = "CoursesDb";
     private static final String DB_TABLE = "Courses";
 
@@ -114,7 +114,12 @@ public class DbHelper extends SQLiteOpenHelper {
         this.addCourseToDB(c26);
         Course c27 = new Course("BIOS1301", "Science", "Ecology, Sustainability and Environmental Science", "", "General Education", 1, 0, "This course is only offered in T1", "", 1, 0, 0, 1);
         this.addCourseToDB(c27);
-
+        Course c28 = new Course("PSYC1025", "Psychology", "Psychology of Work", "", "Elective", 1, 0, "This course is only offered in T1 and T3", "", 1, 0, 1, 1);
+        this.addCourseToDB(c28);
+        Course c29 = new Course("ARTS1060", "Arts", "Introduction to Film Studies", "", "Elective", 1, 0, "This course is only offered in T1", "", 1, 0, 0, 1);
+        this.addCourseToDB(c29);
+        Course c30 = new Course("DATA1001", "Mathematics", "Introduction to Data Science and Decisions", "", "Elective", 0, 0, "This course is only offered in T2", "", 0, 1, 0, 1);
+        this.addCourseToDB(c30);
     }
 
 
@@ -502,6 +507,104 @@ public class DbHelper extends SQLiteOpenHelper {
         return courseList;
     }
 
+    public List<Course> getAllT1Y2Courses() {
+        List<Course> courseList = new ArrayList<Course>();
+
+        dbase = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE term = 'T1Y2' AND completed = 1";
+        Cursor cursor = dbase.rawQuery(selectQuery, null);
+        rowCount = cursor.getCount();
+
+        if (cursor.moveToFirst()) {
+            do {
+                Course c = new Course();
+                c.setCourseTitle(cursor.getString(0));
+                c.setCourseFaculty(cursor.getString(1));
+                c.setCourseDescription(cursor.getString(2));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
+                c.setIsEnabled(cursor.getInt(5));
+                c.setIsCompleted(cursor.getInt(6));
+                c.setCourseError(cursor.getString(7));
+                c.setTerm(cursor.getString(8));
+                c.setT1(cursor.getInt(9));
+                c.setT2(cursor.getInt(10));
+                c.setT3(cursor.getInt(11));
+                c.setPrereq(cursor.getInt(12));
+                courseList.add(c);
+
+
+            } while (cursor.moveToNext());
+        }
+        return courseList;
+    }
+
+    public List<Course> getAllT2Y2Courses() {
+        List<Course> courseList = new ArrayList<Course>();
+
+        dbase = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE term = 'T2Y2' AND completed = 1";
+        Cursor cursor = dbase.rawQuery(selectQuery, null);
+        rowCount = cursor.getCount();
+
+        if (cursor.moveToFirst()) {
+            do {
+                Course c = new Course();
+                c.setCourseTitle(cursor.getString(0));
+                c.setCourseFaculty(cursor.getString(1));
+                c.setCourseDescription(cursor.getString(2));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
+                c.setIsEnabled(cursor.getInt(5));
+                c.setIsCompleted(cursor.getInt(6));
+                c.setCourseError(cursor.getString(7));
+                c.setTerm(cursor.getString(8));
+                c.setT1(cursor.getInt(9));
+                c.setT2(cursor.getInt(10));
+                c.setT3(cursor.getInt(11));
+                c.setPrereq(cursor.getInt(12));
+                courseList.add(c);
+
+
+            } while (cursor.moveToNext());
+        }
+
+        return courseList;
+    }
+
+    public List<Course> getAllT3Y2Courses() {
+        List<Course> courseList = new ArrayList<Course>();
+
+        dbase = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE term = 'T3Y2' AND completed = 1";
+        Cursor cursor = dbase.rawQuery(selectQuery, null);
+        rowCount = cursor.getCount();
+
+        if (cursor.moveToFirst()) {
+            do {
+                Course c = new Course();
+                c.setCourseTitle(cursor.getString(0));
+                c.setCourseFaculty(cursor.getString(1));
+                c.setCourseDescription(cursor.getString(2));
+                c.setAssessmentStructure(cursor.getString(3));
+                c.setCourseType(cursor.getString(4));
+                c.setIsEnabled(cursor.getInt(5));
+                c.setIsCompleted(cursor.getInt(6));
+                c.setCourseError(cursor.getString(7));
+                c.setTerm(cursor.getString(8));
+                c.setT1(cursor.getInt(9));
+                c.setT2(cursor.getInt(10));
+                c.setT3(cursor.getInt(11));
+                c.setPrereq(cursor.getInt(12));
+                courseList.add(c);
+
+
+            } while (cursor.moveToNext());
+        }
+
+        return courseList;
+    }
+
     public int getRemainingCoreCourses() {
         int coreRequirement = 16;
         List<Course> courseList = new ArrayList<Course>();
@@ -540,7 +643,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public int getRemainingElectiveCourses() {
-        int electiveRequirement = 2;
+        int electiveRequirement = 6;
         List<Course> courseList = new ArrayList<Course>();
 
         dbase = this.getReadableDatabase();

@@ -9,6 +9,7 @@
         android:label="MyGamifiedDegree"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity android:name=".level3"></activity>
         <activity
@@ -23,6 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CourseOverview"></activity>
+        <activity android:name=".CourseOverviewY2"></activity>
+
     </application>
 
 </manifest>
