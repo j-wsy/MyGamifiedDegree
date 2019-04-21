@@ -1,5 +1,6 @@
 package com.example.juzza.mygamifieddegree;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,7 +14,7 @@ import android.view.Gravity;
 import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
 import android.view.MenuItem;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
 
 
@@ -35,7 +36,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MessageFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_main);
+            navigationView.setCheckedItem(R.id.nav_message);
         }
     }
 
@@ -43,16 +44,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 
-            case R.id.nav_main:
+            case R.id.nav_message:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MessageFragment()).commit();
                 break;
+            case R.id.nav_chat:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ChatFragment()).commit();
+                break;
 
-            case R.id.nav_rewardboard:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RewardBoardFragment()).commit();
+            case R.id.nav_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
                 break;
 
             case R.id.nav_contact:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContactFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactFragment()).commit();
+                break;
+
+            case R.id.nav_rewardboard:
+                Intent intent = new Intent(HomeActivity.this, RewardBoardNew.class);
+                startActivity(intent);
                 break;
 
         }
@@ -62,12 +71,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if(drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }else{
             super.onBackPressed();
         }
     }
-}
 
-//04202019
+
+}

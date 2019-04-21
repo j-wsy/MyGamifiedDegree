@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".level3"></activity>
         <activity
-            android:name=".HomeActivity"/>
+            android:name=".HomeActivity" />
         <activity android:name=".OverWorld"></activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CourseOverview"></activity>
-        <activity android:name=".CourseOverviewY2"></activity>
+        <activity android:name=".RewardBoardNew"></activity>
+
 
     </application>
 
