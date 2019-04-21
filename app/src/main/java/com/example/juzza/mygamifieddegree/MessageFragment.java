@@ -13,11 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-import android.support.v7.app.ActionBar;
+
+
 
 public class MessageFragment extends Fragment {
-
-    ActionBar actionBar;
 
 
   // mainpage
@@ -52,7 +51,7 @@ public class MessageFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent level3 = new Intent(getActivity(), level3.class);
@@ -61,7 +60,7 @@ public class MessageFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent level3 = new Intent(getActivity(), CourseOverview.class);
