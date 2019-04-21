@@ -3,6 +3,7 @@ package com.example.juzza.mygamifieddegree;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -208,18 +209,15 @@ public class Term1 extends Fragment {
                         viewButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                //Fragment fragment = new RewardBoardFragment();
-                                //FragmentTransaction fragmentTransaction = ((FragmentActivity) getActivity()).getSupportFragmentManager().beginTransaction();
-                                //fragmentTransaction.replace(R.id.course_container,fragment);
-                                //fragmentTransaction.addToBackStack(null);
-                                //fragmentTransaction.commit();
-
-                                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                                /*FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                                 Fragment fragment = new RewardBoardFragment();
                                 fragmentTransaction.replace(R.id.course_container,fragment);
                                 fragmentTransaction.addToBackStack(null);
                                 fragmentTransaction.commit();
-                                dialog2.dismiss();
+                                dialog2.dismiss();*/
+                                Intent intent = new Intent(getActivity(),RewardBoardNew.class);
+                                startActivity(intent);
+
                             }
                         });
 
@@ -245,14 +243,6 @@ public class Term1 extends Fragment {
 
                         t2Avail = dbHelper.getT2RemAvail();
                         dbHelper.updateEnable(t2Avail);
-                        int infs2621 = dbHelper.getIsEnabled("INFS2605");
-                        int infs2603 = dbHelper.getIsEnabled("INFS2603");
-                        int infs1609 = dbHelper.getIsCompleted("INFS1609");
-                        int infs1603 = dbHelper.getIsCompleted("INFS1603");
-                        int infs2605pre = dbHelper.getPrereq("INFS2605");
-                        int infs2603pre = dbHelper.getPrereq("INFS2603");
-                        toast.makeText(getActivity(),"INFS2605 Enabled: " + infs2621 + " INFS2603: " + infs2603 + " INFS1609: " + infs1609+ " INFS1603: " + infs1603 + " 2605 Pre: " + infs2605pre + " 2603 Pre: " + infs2603pre, Toast.LENGTH_SHORT).show();
-                        //toast.makeText(getActivity(),"List: " + t2Avail, Toast.LENGTH_SHORT).show();
                         Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
                         FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.detach(fragment);
