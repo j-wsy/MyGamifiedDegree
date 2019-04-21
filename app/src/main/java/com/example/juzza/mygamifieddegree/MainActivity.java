@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(registerIntent);
             }
         });
-        testBtn = findViewById(R.id.btntest);
 
 
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 }
 
 

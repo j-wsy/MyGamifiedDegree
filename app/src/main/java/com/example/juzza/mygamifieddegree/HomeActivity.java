@@ -1,5 +1,6 @@
 package com.example.juzza.mygamifieddegree;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -51,12 +52,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
+                break;
 
             case R.id.nav_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactFragment()).commit();
+                break;
 
             case R.id.nav_rewardboard:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new RewardBoardFragment()).commit();
+                Intent intent = new Intent(HomeActivity.this, RewardBoardNew.class);
+                startActivity(intent);
+                break;
 
         }
         drawer.closeDrawer(GravityCompat.START);
