@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 public class MessageFragment extends Fragment {
 
-    Toast toast;
 
     @Nullable
     @Override
@@ -119,5 +118,7 @@ public class MessageFragment extends Fragment {
         */
         }
     }
+
+
 
 
