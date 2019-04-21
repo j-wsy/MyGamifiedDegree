@@ -7,7 +7,7 @@
     android:background="@drawable/background"
     android:orientation="vertical"
     android:id="@+id/course_container"
-    tools:context=".CourseOverview">
+    tools:context=".CourseOverviewY2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,10 +26,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Year 1"
+            android:text="Year 2"
             android:textColor="@color/colorGrey"
             android:textAlignment="center"
             android:textSize="20dp" />
+
+
 
     </android.support.v7.widget.Toolbar>
 

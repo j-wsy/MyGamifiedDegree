@@ -1,6 +1,5 @@
 package com.example.juzza.mygamifieddegree;
 
-
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -8,7 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,9 +21,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,29 +28,31 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Term1.OnFragmentInteractionListener} interface
+ * {@link Term2Y2.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Term1#newInstance} factory method to
+ * Use the {@link Term2Y2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Term1 extends Fragment {
+public class Term2Y2 extends Fragment {
 
-    RecyclerView recyclerView;
+    static RecyclerView recyclerView;
     RecyclerView recyclerView2;
     RecyclerView recyclerView3;
     RecyclerView recyclerView4;
-    static RecyclerViewAdapter adapter;
-    static RecyclerViewAdapter adapter2;
-    static RecyclerViewAdapter adapter3;
-    static RecyclerViewAdapter adapter4;
-    List<Course> courseList;
+    static RecyclerViewAdapterY2 adapter;
+    static RecyclerViewAdapterY2 adapter2;
+    static RecyclerViewAdapterY2 adapter3;
+    static RecyclerViewAdapterY2 adapter4;
+    static List<Course> courseList;
     List<Course> courseList2;
     List<Course> courseList3;
     List<Course> courseList4;
+    static DbHelper dbHelper;
     Dialog dialog;
-    List<String> t2Avail;
-    List<String> t2Unavail;
+    List<String> t3Avail;
+    List<String> t3Unavail;
     Toast toast;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,9 +63,9 @@ public class Term1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Term1.OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener mListener;
 
-    public Term1() {
+    public Term2Y2() {
         // Required empty public constructor
     }
 
@@ -81,8 +78,8 @@ public class Term1 extends Fragment {
      * @return A new instance of fragment Term2.
      */
     // TODO: Rename and change types and number of parameters
-    public static Term1 newInstance(String param1, String param2) {
-        Term1 fragment = new Term1();
+    public static Term2Y2 newInstance(String param1, String param2) {
+        Term2Y2 fragment = new Term2Y2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -104,16 +101,16 @@ public class Term1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View rootView = inflater.inflate(R.layout.fragment_term1, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_term2, container, false);
 
         //Initialise first recyclerview
         courseList = new ArrayList<>();
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        final DbHelper dbHelper = new DbHelper(getActivity());
+        dbHelper = new DbHelper(getActivity());
         courseList = dbHelper.getAllCoreCourses();
-        adapter = new RecyclerViewAdapter(getActivity(), courseList);
+        adapter = new RecyclerViewAdapterY2(getActivity(), courseList);
         recyclerView.setAdapter(adapter);
 
         //Initialise second recyclerview
@@ -122,7 +119,7 @@ public class Term1 extends Fragment {
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         courseList2 = dbHelper.getAllElectiveCourses();
-        adapter2 = new RecyclerViewAdapter(getActivity(), courseList2);
+        adapter2 = new RecyclerViewAdapterY2(getActivity(), courseList2);
         recyclerView2.setAdapter(adapter2);
 
         //Initialise fourth recyclerview
@@ -130,8 +127,8 @@ public class Term1 extends Fragment {
         recyclerView4 = rootView.findViewById(R.id.recyclerView4);
         recyclerView4.setHasFixedSize(true);
         recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        courseList4 = dbHelper.getAllT1Courses();
-        adapter4 = new RecyclerViewAdapter(getActivity(), courseList4);
+        courseList4 = dbHelper.getAllT2Y2Courses();
+        adapter4 = new RecyclerViewAdapterY2(getActivity(), courseList4);
         recyclerView4.setAdapter(adapter4);
 
         //Initialise spinner and third recyclerview
@@ -149,7 +146,7 @@ public class Term1 extends Fragment {
                     recyclerView3.setHasFixedSize(true);
                     recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     courseList3 = dbHelper.getArtsCourses();
-                    adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
+                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
                     recyclerView3.setAdapter(adapter3);
                 } else {
                     courseList3 = new ArrayList<>();
@@ -157,7 +154,7 @@ public class Term1 extends Fragment {
                     recyclerView3.setHasFixedSize(true);
                     recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     courseList3 = dbHelper.getScienceCourses();
-                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
+                    adapter3 = new RecyclerViewAdapterY2(getActivity(), courseList3);
                     recyclerView3.setAdapter(adapter3);
                 }
             } // to close the onItemSelected
@@ -185,7 +182,7 @@ public class Term1 extends Fragment {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
                 TextView remainingCourses = (TextView) dialog.findViewById(R.id.remainingCourses);
-                String remainingDesc = dbHelper.getRemainingCoreCourses() + " core(s)  \n" + dbHelper.getRemainingElectiveCourses() + " elective(s)\n" + dbHelper.getRemainingGeneralCourses() + " gen ed(s)";
+                String remainingDesc = dbHelper.getRemainingCoreCourses() + " core(s) \n" + dbHelper.getRemainingElectiveCourses() + " elective(s) \n" + dbHelper.getRemainingGeneralCourses() + " gen ed(s)";
                 remainingCourses.setText(remainingDesc);
                 closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -208,23 +205,12 @@ public class Term1 extends Fragment {
                         viewButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                //Fragment fragment = new RewardBoardFragment();
-                                //FragmentTransaction fragmentTransaction = ((FragmentActivity) getActivity()).getSupportFragmentManager().beginTransaction();
-                                //fragmentTransaction.replace(R.id.course_container,fragment);
-                                //fragmentTransaction.addToBackStack(null);
-                                //fragmentTransaction.commit();
-
-                                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                                Fragment fragment = new RewardBoardFragment();
-                                fragmentTransaction.replace(R.id.course_container,fragment);
-                                fragmentTransaction.addToBackStack(null);
-                                fragmentTransaction.commit();
-                                dialog2.dismiss();
                             }
                         });
 
-                        t2Unavail = dbHelper.getT2RemUnavail();
-                        dbHelper.updateDisable(t2Unavail);
+                        t3Unavail = dbHelper.getT3RemUnavail();
+                        dbHelper.updateDisable(t3Unavail);
+
                         if (dbHelper.getIsCompleted("INFS1602") == 1) {
                             dbHelper.updatePrereq("INFS2621");
                             dbHelper.updatePrereq("INFS3603");
@@ -243,17 +229,28 @@ public class Term1 extends Fragment {
                             }
                         }
 
-                        t2Avail = dbHelper.getT2RemAvail();
-                        dbHelper.updateEnable(t2Avail);
-                        int infs2621 = dbHelper.getIsEnabled("INFS2605");
-                        int infs2603 = dbHelper.getIsEnabled("INFS2603");
-                        int infs1609 = dbHelper.getIsCompleted("INFS1609");
-                        int infs1603 = dbHelper.getIsCompleted("INFS1603");
-                        int infs2605pre = dbHelper.getPrereq("INFS2605");
-                        int infs2603pre = dbHelper.getPrereq("INFS2603");
-                        toast.makeText(getActivity(),"INFS2605 Enabled: " + infs2621 + " INFS2603: " + infs2603 + " INFS1609: " + infs1609+ " INFS1603: " + infs1603 + " 2605 Pre: " + infs2605pre + " 2603 Pre: " + infs2603pre, Toast.LENGTH_SHORT).show();
-                        //toast.makeText(getActivity(),"List: " + t2Avail, Toast.LENGTH_SHORT).show();
-                        Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
+                        if (dbHelper.getIsCompleted("INFS2603") ==1) {
+                            dbHelper.updatePrereq("INFS3604");
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS3634") ==1) {
+                            dbHelper.updatePrereq("INFS3605");
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                            dbHelper.updatePrereq("INFS3634");
+                        }
+
+                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
+                            dbHelper.updatePrereq("INFS3830");
+                            dbHelper.updatePrereq("INFS3873");
+                        }
+
+
+
+                        t3Avail = dbHelper.getT3RemAvail();
+                        dbHelper.updateEnable(t3Avail);
+                        Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(2);
                         FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.detach(fragment);
                         fragmentTransaction.attach(fragment);
@@ -273,7 +270,6 @@ public class Term1 extends Fragment {
         return rootView;
 
     }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -299,6 +295,7 @@ public class Term1 extends Fragment {
         mListener = null;
     }
 
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -314,4 +311,3 @@ public class Term1 extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 }
-

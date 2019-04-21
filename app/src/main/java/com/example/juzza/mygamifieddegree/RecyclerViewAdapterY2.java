@@ -2,7 +2,6 @@ package com.example.juzza.mygamifieddegree;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -19,11 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdapterY2.MyViewHolder> {
 
     private Context mContext;
     private List<Course> courseList;
@@ -31,7 +28,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     Toast toast;
     DbHelper dbHelper;
 
-    public RecyclerViewAdapter(Context mContext, List<Course> mData) {
+    public RecyclerViewAdapterY2(Context mContext, List<Course> mData) {
         this.mContext = mContext;
         this.courseList = mData;
     }
@@ -77,12 +74,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             int tabNumber = CourseOverview.getTabNumber();
                             dbHelper.updateIsCompleted(course);
                             if (tabNumber == 0){
-                                String termSelected = "T1";
+                                String termSelected = "T1Y2";
                                 dbHelper.updateTerm(course,termSelected);
-                                Term1.adapter.notifyDataSetChanged();
-                                Term1.adapter2.notifyDataSetChanged();
-                                Term1.adapter3.notifyDataSetChanged();
-                                Term1.adapter4.notifyDataSetChanged();
+                                Term1Y2.adapter.notifyDataSetChanged();
+                                Term1Y2.adapter2.notifyDataSetChanged();
+                                Term1Y2.adapter3.notifyDataSetChanged();
+                                Term1Y2.adapter4.notifyDataSetChanged();
                                 Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(0);
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.detach(fragment);
@@ -90,12 +87,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 fragmentTransaction.commit();
 
                             }else if (tabNumber == 1){
-                                String termSelected = "T2";
+                                String termSelected = "T2Y2";
                                 dbHelper.updateTerm(course,termSelected);
-                                Term2.adapter.notifyDataSetChanged();
-                                Term2.adapter2.notifyDataSetChanged();
-                                Term2.adapter3.notifyDataSetChanged();
-                                Term2.adapter4.notifyDataSetChanged();
+                                Term2Y2.adapter.notifyDataSetChanged();
+                                Term2Y2.adapter2.notifyDataSetChanged();
+                                Term2Y2.adapter3.notifyDataSetChanged();
+                                Term2Y2.adapter4.notifyDataSetChanged();
                                 Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(1);
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.detach(fragment);
@@ -103,14 +100,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 fragmentTransaction.commit();
 
                             }else if (tabNumber == 2) {
-                                String termSelected = "T3";
+                                String termSelected = "T3Y2";
                                 dbHelper.updateTerm(course,termSelected);
-                                Term3.adapter.notifyDataSetChanged();
-                                Term3.adapter2.notifyDataSetChanged();
-                                Term3.adapter3.notifyDataSetChanged();
-                                Term3.adapter4.notifyDataSetChanged();
+                                Term3Y2.adapter.notifyDataSetChanged();
+                                Term3Y2.adapter2.notifyDataSetChanged();
+                                Term3Y2.adapter3.notifyDataSetChanged();
+                                Term3Y2.adapter4.notifyDataSetChanged();
                                 Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(1);
-
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);

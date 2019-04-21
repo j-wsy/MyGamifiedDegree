@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setTitle("MyDegree");
 
         //actionBar = getSupportActionBar();
         //actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(registerIntent);
             }
         });
-        testBtn = findViewById(R.id.btntest);
 
 
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
@@ -72,9 +70,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-
-//Hello This is Jade Soo
-//Justin Test
-//Hi, Eric here
-//  GARRY HEREE
