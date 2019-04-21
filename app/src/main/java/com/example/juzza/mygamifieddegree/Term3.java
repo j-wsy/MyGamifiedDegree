@@ -266,12 +266,9 @@ public class Term3 extends Fragment {
 
                         t1Avail = dbHelper.getT1RemAvail();
                         dbHelper.updateEnable(t1Avail);
-                        int infs2621 = dbHelper.getIsEnabled("INFS2605");
-                        int infs2603 = dbHelper.getIsEnabled("INFS2603");
-                        int infs1609 = dbHelper.getIsCompleted("INFS1609");
-                        int infs1603 = dbHelper.getIsCompleted("INFS1603");
-                        int infs2605pre = dbHelper.getPrereq("INFS2605");
-                        toast.makeText(getActivity(),"INFS2605 Enabled: " + infs2621 + " INFS2603: " + infs2603 + " INFS1609: " + infs1609+ " INFS1603: " + infs1603 + " 2605 Pre: " + infs2605pre, Toast.LENGTH_SHORT).show();
+                        int infs3617 = dbHelper.getIsEnabled("INFS3617");
+                        int infs3617pre = dbHelper.getPrereq("INFS3617");
+                        toast.makeText(getActivity(),"INF3617 Enabled: " + infs3617 + " Pre-req: " + infs3617pre, Toast.LENGTH_SHORT).show();
 
                         //Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
                         FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();

@@ -163,6 +163,10 @@ public class Term1Y2 extends Fragment {
             }
         });
 
+        int infs3617 = dbHelper.getIsEnabled("INFS3617");
+        int infs3617pre = dbHelper.getPrereq("INFS3617");
+        toast.makeText(getActivity(),"INF3617 Enabled: " + infs3617 + " Pre-req: " + infs3617pre, Toast.LENGTH_SHORT).show();
+
         //Button
         Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
         enrolButton.setVisibility(View.INVISIBLE);

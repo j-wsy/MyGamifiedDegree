@@ -731,7 +731,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public List<String> getT1RemAvail() {
         List<String> array = new ArrayList<String>();
         dbase = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE completed = 0 AND term2 = 1 AND prereq = 1";
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE completed = 0 AND term1 = 1 AND prereq = 1";
         Cursor cursor = dbase.rawQuery(selectQuery, null);
         rowCount = cursor.getCount();
 
@@ -748,7 +748,7 @@ public class DbHelper extends SQLiteOpenHelper {
         List<String> array = new ArrayList<String>();
 
         dbase = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE completed = 0 AND term2 = 0";
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE completed = 0 AND term1 = 0";
         Cursor cursor = dbase.rawQuery(selectQuery, null);
         rowCount = cursor.getCount();
 

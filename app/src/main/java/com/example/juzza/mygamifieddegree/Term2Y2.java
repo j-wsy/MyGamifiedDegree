@@ -246,6 +246,8 @@ public class Term2Y2 extends Fragment {
                             dbHelper.updatePrereq("INFS3873");
                         }
 
+
+
                         t3Avail = dbHelper.getT3RemAvail();
                         dbHelper.updateEnable(t3Avail);
                         Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(2);
