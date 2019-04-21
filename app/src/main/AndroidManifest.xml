@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CourseOverview"></activity>
+        <activity android:name=".CourseOverviewY2"></activity>
         <activity android:name=".RewardBoardNew"></activity>
 
 
