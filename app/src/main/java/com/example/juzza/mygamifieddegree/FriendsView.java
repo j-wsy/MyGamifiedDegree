@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ public class FriendsView extends Fragment {
     static RecyclerViewAdapterF adapter;
     TextView NameF;
     ProgressBar ScoreF;
+    Button button8;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -44,13 +46,21 @@ public class FriendsView extends Fragment {
         int remainingGen = dbHelper.getRemainingGeneralCourses();
         int total = remainingCore + remainingElective + remainingGen;
         ScoreF.setProgress(24 - total);
+        button8 = rootView.findViewById(R.id.button8);
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, new AddFriendsView()).commit();
 
+            }
+        });
 
         //Initialise first recyclerview
         friendList = new ArrayList<>();
         recyclerViewF = rootView.findViewById(R.id.recyclerViewF);
         recyclerViewF.setHasFixedSize(true);
-        recyclerViewF.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerViewF.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         final DbHelperF dbHelperF = new DbHelperF(getActivity());
         friendList = dbHelperF.getAllFriendsAdded();
         adapter = new RecyclerViewAdapterF(getActivity(), friendList);

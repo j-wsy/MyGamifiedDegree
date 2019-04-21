@@ -72,7 +72,7 @@ public class DbHelperF extends SQLiteOpenHelper {
         List<Friend> friendList = new ArrayList<Friend>();
 
         dbase = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + DB_TABLE;
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE isFriend = 0";
         Cursor cursor = dbase.rawQuery(selectQuery, null);
         rowCount = cursor.getCount();
 
@@ -93,7 +93,7 @@ public class DbHelperF extends SQLiteOpenHelper {
         List<Friend> friendList = new ArrayList<Friend>();
 
         dbase = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + DB_TABLE;
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE isFriend = 1";
         Cursor cursor = dbase.rawQuery(selectQuery, null);
         rowCount = cursor.getCount();
 
@@ -108,6 +108,14 @@ public class DbHelperF extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return friendList;
+    }
+
+
+    public void updateIsFriend(String friendName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + DB_TABLE + " SET " + IsFriend +
+                " = '" + 1 + "' WHERE " + FriendName + " = '" + friendName + "'";
+        db.execSQL(query);
     }
     /*
 

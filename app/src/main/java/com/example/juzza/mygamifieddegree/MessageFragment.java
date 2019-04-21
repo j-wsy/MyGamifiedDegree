@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class MessageFragment extends Fragment {
 
 
+    Toast toast;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
