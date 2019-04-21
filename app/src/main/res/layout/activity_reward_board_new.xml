@@ -11,7 +11,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
     android:layout_marginLeft="12dp"
@@ -47,9 +47,11 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="15dp"
         android:layout_gravity="center|start"
         android:orientation="vertical">
 
@@ -58,7 +60,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="1dp">
 
             <!-- Badge 1 -->
             <LinearLayout
@@ -101,7 +104,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -135,7 +138,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -173,7 +176,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="1dp">
 
 
             <!-- Badge 4 -->
@@ -214,7 +218,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -248,7 +252,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -287,7 +291,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="1dp">
 
 
             <!-- Badge 7 -->
@@ -329,7 +334,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -364,7 +369,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
