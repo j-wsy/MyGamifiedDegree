@@ -2,6 +2,7 @@ package com.example.juzza.mygamifieddegree;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -205,7 +206,10 @@ public class Term2Y2 extends Fragment {
                         viewButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                Intent intent = new Intent(getActivity(),RewardBoardNew.class);
+                                startActivity(intent);
                             }
+
                         });
 
                         t3Unavail = dbHelper.getT3RemUnavail();

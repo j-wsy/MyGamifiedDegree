@@ -13,5 +13,8 @@
     <color name="textColor">#000000</color>
     <color name="action_bar">#000000</color>
     <color name="btColor">#FFEE58</color>
+    <color name="colorPurple">#9868fe</color>
+    <color name="yellow">#fed97b</color>
+    <color name="blue">#7cd0fe</color>
 
 </resources>

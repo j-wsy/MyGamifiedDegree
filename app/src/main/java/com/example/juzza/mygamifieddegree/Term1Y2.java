@@ -3,6 +3,7 @@ package com.example.juzza.mygamifieddegree;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -208,12 +209,8 @@ public class Term1Y2 extends Fragment {
                         viewButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                                Fragment fragment = new RewardBoardFragment();
-                                fragmentTransaction.replace(R.id.course_container,fragment);
-                                fragmentTransaction.addToBackStack(null);
-                                fragmentTransaction.commit();
-                                dialog2.dismiss();
+                                Intent intent = new Intent(getActivity(),RewardBoardNew.class);
+                                startActivity(intent);
                             }
                         });
 

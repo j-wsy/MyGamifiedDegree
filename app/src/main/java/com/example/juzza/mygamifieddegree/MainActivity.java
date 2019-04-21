@@ -1,6 +1,7 @@
 package com.example.juzza.mygamifieddegree;
 
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button mButtonLogin;
     TextView mTextViewRegister;
     DatabaseHelper db;
-    Button testBtn;
+    Dialog dialog;
 
     ActionBar actionBar;
 
@@ -30,12 +32,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        //actionBar = getSupportActionBar();
-        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFEE58")));
-        //actionBar.setTitle(Html.fromHtml("<font color='#000000'> MyDegree </font>"));
-
 
 
         db = new DatabaseHelper(this);
@@ -61,8 +57,21 @@ public class MainActivity extends AppCompatActivity {
                 String pwd = mTextPassword.getText().toString().trim();
                 Boolean res = db.checkUsers(user, pwd);
                 if (res == true) {
-                    Intent LoginScreen = new Intent(MainActivity.this, HomeActivity.class);
-                    startActivity(LoginScreen);
+
+                    dialog = new Dialog(MainActivity.this);
+                    dialog.setContentView(R.layout.avatar_intro);
+                    ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.show();
+                    closeButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            Intent LoginScreen = new Intent(MainActivity.this, HomeActivity.class);
+                            startActivity(LoginScreen);
+                        }
+                    });
+
                 } else {
                     Toast.makeText(MainActivity.this, "Error: Unable to log-in - could not find an existing user with that name and password!", Toast.LENGTH_SHORT).show();
                 }
