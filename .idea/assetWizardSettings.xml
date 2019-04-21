@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_import_contacts_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_lock_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,12 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="f3d812" />
-                            <entry key="height" value="6" />
-                            <entry key="outputName" value="ic_import_contacts_black_6dp" />
+                            <entry key="color" value="a9a9a9" />
+                            <entry key="outputName" value="lock" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\Jade Soo" />
-                            <entry key="width" value="6" />
+                            <entry key="sourceFile" value="$APPLICATION_HOME_DIR$/bin/C:\Users\Jade Soo" />
                           </map>
                         </option>
                       </PersistentState>
