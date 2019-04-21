@@ -23,6 +23,10 @@
             android:icon="@drawable/ic_message"
             android:title="Friends"/>
 
+        <item android:id="@+id/nav_avatar"
+            android:icon="@drawable/ic_message"
+            android:title="My Avatar"/>
+
 
 
     </group>

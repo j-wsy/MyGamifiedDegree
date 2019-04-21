@@ -7,14 +7,14 @@
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="MyGamifiedDegree"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".level3"></activity>
-        <activity
-            android:name=".HomeActivity"/>
-        <activity android:name=".OverWorld"></activity>
+        <activity android:name=".Avatar"></activity>
+        <activity android:name=".level3" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".OverWorld" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -23,9 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CourseOverview"></activity>
-        <activity android:name=".CourseOverviewY2"></activity>
-
+        <activity android:name=".CourseOverview" />
+        <activity android:name=".CourseOverviewY2" />
+        <activity android:name=".RewardBoardNew" />
     </application>
 
 </manifest>

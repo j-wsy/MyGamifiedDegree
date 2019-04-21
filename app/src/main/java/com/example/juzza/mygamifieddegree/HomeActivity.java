@@ -1,5 +1,9 @@
 package com.example.juzza.mygamifieddegree;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,9 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
+    Dialog dialog;
 
 
     @Override
@@ -47,12 +53,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MessageFragment()).commit();
                 break;
 
-            case R.id.nav_rewardboard:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RewardBoardFragment()).commit();
+            case R.id.nav_contact:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactFragment()).commit();
                 break;
 
-            case R.id.nav_contact:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContactFragment()).commit();
+            case R.id.nav_rewardboard:
+                Intent intent = new Intent(HomeActivity.this, RewardBoardNew.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_avatar:
+                Intent intent2 = new Intent(HomeActivity.this, Avatar.class);
+                startActivity(intent2);
                 break;
 
             case R.id.nav_friends:
@@ -66,12 +78,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if(drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }else{
             super.onBackPressed();
         }
     }
-}
 
-//04202019
+
+}

@@ -10,4 +10,15 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="newbie_badge_message">Get this badge as you first enrol.</string>
+    <string name="javaist_badge_message">Get this badge as you have done INFS1609.</string>
+    <string name="java_xplorer_badge_message">Get this badge as you have done INFS2605.</string>
+    <string name="java_star_badge_message">Get this badge as you have done INFS3830.</string>
+    <string name="java_guru_badge_message">Get this badge as you have done INFS3605.</string>
+    <string name="groupie_badge_message">Get this badge as you have done INFS2608.</string>
+    <string name="term1_yr1_badge_message">Get this badge as you have done Term 1 Year 1.</string>
+    <string name="term2_yr1_badge_message">Get this badge as you have done Term 2 Year 1.</string>
+    <string name="yr1_badge_message">Get this badge as you have done Year 1.</string>
+
 </resources>

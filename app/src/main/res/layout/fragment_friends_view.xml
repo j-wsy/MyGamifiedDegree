@@ -142,6 +142,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="20dp"
+                    android:text="Player 1"
                     android:textAlignment="center"
                     android:textColor="@color/colorGrey"
                     android:textSize="18sp"

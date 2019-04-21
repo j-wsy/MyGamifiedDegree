@@ -12,9 +12,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#FFFFFF"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
     tools:context=".RewardBoardNew">
+
 
 
     <!-- Title -->
@@ -45,7 +48,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="150dp"
         android:layout_gravity="center|start"
         android:orientation="vertical">
@@ -61,25 +64,29 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:id="@+id/badge1"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/newbie" />
+                    android:src="@drawable/newbie"
+                    android:clickable="true"
+                    android:contentDescription="@string/newbie_badge_message"
+                    android:onClick="showNewbieIntro"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -94,30 +101,32 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:id="@+id/badge2"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/javaist" />
+                    android:src="@drawable/t1y1"
+                    android:contentDescription="@string/term1_yr1_badge_message"
+                    android:onClick="showT1Y1Intro"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="1dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Javaist" />
+                    android:text="Term 1 Yr 1" />
 
 
             </LinearLayout>
@@ -126,30 +135,32 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:id="@+id/badge3"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/javaexplorer" />
+                    android:src="@drawable/t2y1"
+                    android:contentDescription="@string/term2_yr1_badge_message"
+                    android:onClick="showT2Y1Intro"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="1dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Java Xplorer" />
+                    android:text="Term 2 Yr 1" />
 
 
             </LinearLayout>
@@ -169,30 +180,32 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:id="@+id/badge4"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/javasuperstar" />
+                    android:src="@drawable/t3y1"
+                    android:contentDescription="@string/yr1_badge_message"
+                    android:onClick="showT3Y1Intro"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Java Star" />
+                    android:text="Year 1" />
 
 
             </LinearLayout>
@@ -201,30 +214,32 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:id="@+id/badge5"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/javaguru" />
+                    android:src="@drawable/javaist"
+                    android:contentDescription="@string/javaist_badge_message"
+                    android:onClick="showJavaistIntro"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Java Guru" />
+                    android:text="Javaist" />
 
 
             </LinearLayout>
@@ -233,30 +248,32 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:id="@+id/badge6"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/groupie" />
+                    android:src="@drawable/javasuperstar"
+                    android:contentDescription="@string/java_star_badge_message"
+                    android:onClick="showJavaStarIntro"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Groupie" />
+                    android:text="Java Star" />
 
 
             </LinearLayout>
@@ -277,30 +294,32 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:id="@+id/badge7"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/freshman" />
+                    android:src="@drawable/javaexplorer"
+                    android:contentDescription="@string/java_xplorer_badge_message"
+                    android:onClick="showJavaXplorerIntro"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="1dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Freshman" />
+                    android:text="Java Xplorer" />
 
 
             </LinearLayout>
@@ -310,30 +329,32 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:id="@+id/badge8"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/sophomore" />
+                    android:src="@drawable/javaguru"
+                    android:contentDescription="@string/java_guru_badge_message"
+                    android:onClick="showJavaGuruIntro"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Sophomore" />
+                    android:text="Java Guru" />
 
 
             </LinearLayout>
@@ -343,30 +364,34 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:id="@+id/badge9"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/junior" />
+                    android:src="@drawable/groupie"
+                    android:contentDescription="@string/groupie_badge_message"
+                    android:onClick="showGroupieIntro"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="-10dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Junior" />
+                    android:text="Groupie" />
+
+
 
 
             </LinearLayout>
