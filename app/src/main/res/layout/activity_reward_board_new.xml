@@ -81,9 +81,9 @@
                     android:clickable="true"
                     android:contentDescription="@string/newbie_badge_message"
                     android:onClick="showNewbieIntro"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/newbie" />
+                    android:scaleType="centerCrop"/>
 
+                //android:src="@drawable/newbie"
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
