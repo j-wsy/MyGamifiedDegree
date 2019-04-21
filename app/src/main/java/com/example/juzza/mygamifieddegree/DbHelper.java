@@ -282,6 +282,39 @@ public class DbHelper extends SQLiteOpenHelper {
         return courseList;
     }
 
+    public Cursor getComplete(String CourseTitle, SQLiteDatabase sqLiteDatabase){
+
+        String arg = CourseTitle;
+        String query = "select IsCompleted from table_name where title=\""+ arg + "\"";
+        Cursor cs = sqLiteDatabase.rawQuery(query, null);
+
+          return cs;
+
+
+        // String[] projecion= {DbHelper.CourseTitle,DbHelper.IsCompleted};
+        //String selection=DbHelper.CourseTitle+" LIKE ?";
+        //String selectionargs[]={CourseTitle};
+        //Cursor cursor=sqLiteDatabase.query(DbHelper.DB_TABLE,projecion,selection,selectionargs,null,null,null);
+
+       //return  cursor;
+
+    }
+
+    public int getcom(String arg){
+       int a=0;
+
+
+       dbase=this.getReadableDatabase();
+
+        String query = "select IsCompleted from Courses where title=\""+ arg + "\"";
+        Cursor cs = dbase.rawQuery(query, null);
+
+      a=cs.getInt(6);
+
+        return a;
+    }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

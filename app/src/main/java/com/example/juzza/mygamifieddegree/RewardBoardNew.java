@@ -27,6 +27,8 @@ public class RewardBoardNew extends AppCompatActivity {
         javaGuru = findViewById(R.id.badge5);
         groupie = findViewById(R.id.badge6);
 
+        newbie.setColorFilter(getApplicationContext().getResources().getColor(R.color.colorGrey));
+
 
 
 
