@@ -23,10 +23,12 @@ public class CourseOverviewY2 extends AppCompatActivity implements Term1Y2.OnFra
         tabLayout.addTab(tabLayout.newTab().setText("Term 3"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager2);
         final PagerAdapterY2 adapter = new PagerAdapterY2(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        //newly added viewpager line
+        viewPager.setOffscreenPageLimit(2);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -46,6 +48,8 @@ public class CourseOverviewY2 extends AppCompatActivity implements Term1Y2.OnFra
             public void onTabReselected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 viewPager.getAdapter().notifyDataSetChanged();
+                //newly added
+                position = tab.getPosition();
 
 
             }

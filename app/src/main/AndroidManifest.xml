@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".CourseOverview" />
         <activity android:name=".CourseOverviewY2" />
+        <activity android:name=".CourseOverviewY3" />
         <activity android:name=".RewardBoardNew" />
     </application>
 
