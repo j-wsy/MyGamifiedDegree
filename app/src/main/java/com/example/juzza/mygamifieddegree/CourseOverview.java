@@ -1,13 +1,10 @@
 package com.example.juzza.mygamifieddegree;
 
-import android.app.ActionBar;
-import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 public class CourseOverview extends AppCompatActivity implements Term1.OnFragmentInteractionListener, Term2.OnFragmentInteractionListener,Term3.OnFragmentInteractionListener{

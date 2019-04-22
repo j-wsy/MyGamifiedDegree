@@ -2,7 +2,6 @@ package com.example.juzza.mygamifieddegree;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -19,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -56,6 +54,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
 
                 if (courseList.get(position).getIsEnabled() == 1) {
+                    int tabNumber = CourseOverview.getTabNumber();
+                    toast.makeText(mContext,"Tab No: " +tabNumber,Toast.LENGTH_SHORT).show();
                     dialog = new Dialog(mContext);
                     dialog.setContentView(R.layout.activity_course_information);
                     ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
@@ -88,6 +88,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
+                                int tabNumber2 = CourseOverviewY2.getTabNumber();
+                                toast.makeText(mContext,"Tab No: " +tabNumber2,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 1){
                                 String termSelected = "T2";

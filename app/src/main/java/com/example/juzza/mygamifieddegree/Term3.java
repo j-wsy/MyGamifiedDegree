@@ -181,7 +181,7 @@ public class Term3 extends Fragment {
                 final DbHelper dbHelper = new DbHelper(getActivity());
 
                 dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.course_progress);
+                dialog.setContentView(R.layout.course_progress_year);
                 ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();

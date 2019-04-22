@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,6 +54,8 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
             public void onClick(View v) {
 
                 if (courseList.get(position).getIsEnabled() == 1) {
+                    int tabNumber = CourseOverviewY2.getTabNumber();
+                    toast.makeText(mContext,"Tab No: " +tabNumber,Toast.LENGTH_SHORT).show();
                     dialog = new Dialog(mContext);
                     dialog.setContentView(R.layout.activity_course_information);
                     ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
@@ -87,7 +90,7 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.commit();
                                 toast.makeText(mContext,termSelected,Toast.LENGTH_SHORT).show();
                                 int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
-                                toast.makeText(mContext,termSelected + fragno,Toast.LENGTH_SHORT).show();
+                                toast.makeText(mContext,termSelected + " " +fragno,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 1){
                                 String termSelected = "T2Y2";
@@ -102,7 +105,7 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
                                 int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
-                                toast.makeText(mContext,termSelected + fragno,Toast.LENGTH_SHORT).show();
+                                toast.makeText(mContext,termSelected + " " +fragno,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 2) {
                                 String termSelected = "T3Y2";
@@ -111,13 +114,13 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                                 Term3Y2.adapter2.notifyDataSetChanged();
                                 Term3Y2.adapter3.notifyDataSetChanged();
                                 Term3Y2.adapter4.notifyDataSetChanged();
-                                Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(2);
+                                Fragment fragment = (Fragment) ((AppCompatActivity) mContext).getSupportFragmentManager().getFragments().get(1);
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
                                 int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
-                                toast.makeText(mContext,termSelected + fragno,Toast.LENGTH_SHORT).show();
+                                toast.makeText(mContext,termSelected + " " +fragno,Toast.LENGTH_SHORT).show();
                             }
 
                             dialog.dismiss();
