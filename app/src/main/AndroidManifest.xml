@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Avatar"></activity>
-        <activity android:name=".level3" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".OverWorld" />
         <activity android:name=".RegisterActivity" />

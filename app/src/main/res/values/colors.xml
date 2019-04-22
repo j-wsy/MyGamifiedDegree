@@ -16,5 +16,7 @@
     <color name="colorPurple">#9868fe</color>
     <color name="yellow">#fed97b</color>
     <color name="blue">#7cd0fe</color>
+    <color name="textBlue">#005eb4</color>
+    <color name="opalBlue">#edecf4</color>
 
 </resources>

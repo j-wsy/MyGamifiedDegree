@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="15dp"
-        app:cardBackgroundColor="@color/opal"
+        app:cardBackgroundColor="@color/opalBlue"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -79,6 +79,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rounded_button"
                     android:text="View Badges"
+                    android:textSize="20sp"
                     android:textColor="@color/darkGrey" />
             </LinearLayout>
 

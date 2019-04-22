@@ -3,31 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp">
+    android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <ImageView
+            android:id="@+id/contactsIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:src="@drawable/phone2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="15dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="16dp" />
 
         <TextView
             android:id="@+id/textview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginLeft="84dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="16dp"
             android:text="Contacts"
+            android:textColor="@color/cardview_dark_background"
             android:textSize="35sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/contactsIcon" />
 
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Having issues with your progression planning?\n\nContact the UNSW Student Center with your enquiry via phone or e-mail or visit us on campus!"
-            android:textSize="15sp"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:text="Having issues with your progression?\n\nContact the UNSW Student Center with your enquiry via phone or e-mail or visit us on campus!"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview1" />
 
@@ -35,46 +51,67 @@
             android:id="@+id/centralMap"
             android:layout_width="match_parent"
             android:layout_height="240sp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="1dp"
             android:scaleType="centerCrop"
             android:src="@drawable/map"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description" />
 
         <TextView
-            android:id="@+id/phoneView"
+            android:id="@+id/phoneTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:text="P:   9385 8500"
-            android:textSize="15sp"
+            android:layout_marginTop="25dp"
+            android:text="Phone"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/centralMap" />
+
+        <TextView
+            android:id="@+id/phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginTop="2dp"
+            android:text="9385 8500"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneTitle" />
 
         <Button
             android:id="@+id/buttoncall"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="240dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/rounded_button"
             android:text="Call"
-            app:layout_constraintStart_toStartOf="@id/phoneView"
-            app:layout_constraintTop_toBottomOf="@id/centralMap"
-            tools:layout_editor_absoluteX="275dp"
-            tools:layout_editor_absoluteY="456dp" />
+            app:layout_constraintStart_toStartOf="@id/phoneTitle"
+            app:layout_constraintTop_toBottomOf="@id/centralMap" />
 
         <TextView
-            android:id="@+id/emailView"
+            android:id="@+id/emailTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="25dp"
-            android:text="E:   studentcentral@unsw.edu.au"
-            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:text="Email"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/phoneView" />
+            app:layout_constraintTop_toBottomOf="@id/phoneNumber" />
+
+        <TextView
+            android:id="@+id/emailAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="studentcentral@unsw.edu.au"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="2dp"
+            app:layout_constraintTop_toBottomOf="@id/emailTitle"
+            tools:layout_editor_absoluteY="657dp" />
 
         <Button
             android:id="@+id/buttonemail"
@@ -82,13 +119,26 @@
             android:layout_height="40dp"
             android:layout_below="@+id/buttoncall"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="240dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="35dp"
             android:background="@drawable/rounded_button"
             android:text="Email"
-            app:layout_constraintStart_toStartOf="@id/emailView"
+            app:layout_constraintStart_toStartOf="@id/emailAdd"
             app:layout_constraintTop_toBottomOf="@id/buttoncall" />
+
+        <Button
+            android:id="@+id/placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:layout_below="@+id/buttoncall"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/rounded_button"
+            android:text="Email"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/emailAdd"
+            app:layout_constraintTop_toBottomOf="@id/buttonemail" />
 
     </android.support.constraint.ConstraintLayout>
 

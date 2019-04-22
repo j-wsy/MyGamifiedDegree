@@ -24,7 +24,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        app:cardBackgroundColor="@color/opal"
+        app:cardBackgroundColor="@color/opalBlue"
         app:cardCornerRadius="15dp">
 
         <android.support.v4.widget.NestedScrollView
@@ -80,6 +80,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rounded_button"
                     android:text="Add Course"
+                    android:textSize="20sp"
                     android:textColor="@color/darkGrey" />
 
             </LinearLayout>

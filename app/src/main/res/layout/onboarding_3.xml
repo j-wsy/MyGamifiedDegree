@@ -40,34 +40,37 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/onboardTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="Meet Clancy!"
+                    android:text="Style Clancy"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/onboardImage"
                     android:layout_width="wrap_content"
-                    android:layout_height="200dp"
+                    android:layout_height="190dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/lion" />
+                    android:src="@drawable/style" />
 
                 <TextView
+                    android:id="@+id/onboardText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="Clancy is a first year Information Systems Student at UNSW. Come join Clancy on this 3 year journey!"
+                    android:text="As you complete your tasks you'll unlock more features to customise Clancy. Let's turn Clancy into a fashion icon!"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="20sp" />
