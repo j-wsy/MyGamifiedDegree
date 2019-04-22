@@ -47,7 +47,7 @@ public class MessageFragment extends Fragment {
                 int remainingGen = dbHelper.getRemainingGeneralCourses();
                 int total = remainingCore + remainingElective + remainingGen;
 
-                if (total == 15) {
+                if (total <= 15) {
                     Intent intent = new Intent(getActivity(), CourseOverviewY2.class);
                     startActivity(intent);
                 }
@@ -68,7 +68,7 @@ public class MessageFragment extends Fragment {
                 int remainingGen = dbHelper.getRemainingGeneralCourses();
                 int total = remainingCore + remainingElective + remainingGen;
 
-                if (total == 6) {
+                if (total <= 6) {
                     Intent intent = new Intent(getActivity(), CourseOverviewY3.class);
                     startActivity(intent);
                 }

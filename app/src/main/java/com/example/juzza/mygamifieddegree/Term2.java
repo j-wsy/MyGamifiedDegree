@@ -167,7 +167,7 @@ public class Term2 extends Fragment {
         });
 
         //Button
-        Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
+        final Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
         enrolButton.setVisibility(View.INVISIBLE);
         int count = adapter4.getItemCount();
         if (count == 3) {
@@ -200,6 +200,7 @@ public class Term2 extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 dialog2.dismiss();
+                                enrolButton.setVisibility(View.INVISIBLE);
                             }
                         });
 
@@ -259,7 +260,7 @@ public class Term2 extends Fragment {
                         int infs1603 = dbHelper.getIsCompleted("INFS1603");
                         int infs2605pre = dbHelper.getPrereq("INFS2605");
                         int infs2603pre = dbHelper.getPrereq("INFS2603");
-                        toast.makeText(getActivity(),"INFS2605 Enabled: " + infs2621 + " INFS2603: " + infs2603 + " INFS1609: " + infs1609+ " INFS1603: " + infs1603 + " 2605 Pre: " + infs2605pre + " 2603 Pre: " + infs2603pre, Toast.LENGTH_SHORT).show();
+                        //toast.makeText(getActivity(),"INFS2605 Enabled: " + infs2621 + " INFS2603: " + infs2603 + " INFS1609: " + infs1609+ " INFS1603: " + infs1603 + " 2605 Pre: " + infs2605pre + " 2603 Pre: " + infs2603pre, Toast.LENGTH_SHORT).show();
                         //toast.makeText(getActivity(),"List: " + t2Avail, Toast.LENGTH_SHORT).show();
                         Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(2);
                         FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();

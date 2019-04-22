@@ -166,7 +166,7 @@ public class Term2Y2 extends Fragment {
         });
 
         //Button
-        Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
+        final Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
         enrolButton.setVisibility(View.INVISIBLE);
         int count = adapter4.getItemCount();
         if (count == 3) {
@@ -199,6 +199,7 @@ public class Term2Y2 extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 dialog2.dismiss();
+                                enrolButton.setVisibility(View.INVISIBLE);
                             }
                         });
 

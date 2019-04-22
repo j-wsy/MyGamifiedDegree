@@ -19,16 +19,16 @@ public class PagerAdapterY2 extends FragmentStatePagerAdapter {
         switch (position) {
 
             case 0:
-                Term1Y2 term1 = new Term1Y2();
-                return term1;
+                Term1Y2 term1Y2 = new Term1Y2();
+                return term1Y2;
 
             case 1:
-                Term2Y2 term2 = new Term2Y2();
-                return term2;
+                Term2Y2 term2Y2 = new Term2Y2();
+                return term2Y2;
 
             case 2:
-                Term3Y2 term3 = new Term3Y2();
-                return term3;
+                Term3Y2 term3Y2 = new Term3Y2();
+                return term3Y2;
             default:
                 return null;
         }

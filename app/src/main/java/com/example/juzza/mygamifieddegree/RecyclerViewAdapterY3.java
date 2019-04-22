@@ -71,7 +71,7 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                     addButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick (View v) {
-                            int tabNumber = CourseOverview.getTabNumber();
+                            int tabNumber = CourseOverviewY3.getTabNumber();
                             dbHelper.updateIsCompleted(course);
                             if (tabNumber == 0){
                                 String termSelected = "T1Y2";

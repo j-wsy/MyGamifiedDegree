@@ -32,6 +32,8 @@ public class CourseOverviewY2 extends AppCompatActivity implements Term1Y2.OnFra
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 viewPager.getAdapter().notifyDataSetChanged();
+                int position = tab.getPosition();
+                toast.makeText(getApplicationContext(),"Position: " + position, Toast.LENGTH_SHORT).show();
 
             }
 

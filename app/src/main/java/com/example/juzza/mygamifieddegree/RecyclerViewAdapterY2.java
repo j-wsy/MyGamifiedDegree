@@ -71,7 +71,7 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                     addButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick (View v) {
-                            int tabNumber = CourseOverview.getTabNumber();
+                            int tabNumber = CourseOverviewY2.getTabNumber();
                             dbHelper.updateIsCompleted(course);
                             if (tabNumber == 0){
                                 String termSelected = "T1Y2";
@@ -85,6 +85,9 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
+                                toast.makeText(mContext,termSelected,Toast.LENGTH_SHORT).show();
+                                int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
+                                toast.makeText(mContext,termSelected + fragno,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 1){
                                 String termSelected = "T2Y2";
@@ -98,6 +101,8 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
+                                int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
+                                toast.makeText(mContext,termSelected + fragno,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 2) {
                                 String termSelected = "T3Y2";
@@ -106,11 +111,13 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                                 Term3Y2.adapter2.notifyDataSetChanged();
                                 Term3Y2.adapter3.notifyDataSetChanged();
                                 Term3Y2.adapter4.notifyDataSetChanged();
-                                Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(1);
+                                Fragment fragment = (Fragment) ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().get(2);
                                 FragmentTransaction fragmentTransaction = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
+                                int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
+                                toast.makeText(mContext,termSelected + fragno,Toast.LENGTH_SHORT).show();
                             }
 
                             dialog.dismiss();

@@ -169,7 +169,7 @@ public class Term3 extends Fragment {
         });
 
         //Button
-        Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
+        final Button enrolButton = (Button) rootView.findViewById(R.id.enrolButton);
         enrolButton.setVisibility(View.INVISIBLE);
         int count = adapter4.getItemCount();
         if (count == 3) {
@@ -193,7 +193,7 @@ public class Term3 extends Fragment {
                 int remainingElective = dbHelper.getRemainingElectiveCourses();
                 int remainingGen = dbHelper.getRemainingGeneralCourses();
                 int total = remainingCore + remainingElective + remainingGen;
-                toast.makeText(getActivity(),"Number completed: " + total, Toast.LENGTH_SHORT).show();
+                //toast.makeText(getActivity(),"Number completed: " + total, Toast.LENGTH_SHORT).show();
 
                 closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -209,6 +209,7 @@ public class Term3 extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 dialog2.dismiss();
+                                enrolButton.setVisibility(View.INVISIBLE);
                             }
                         });
 
@@ -264,7 +265,7 @@ public class Term3 extends Fragment {
                         dbHelper.updateEnable(t1Avail);
                         int infs3617 = dbHelper.getIsEnabled("INFS3617");
                         int infs3617pre = dbHelper.getPrereq("INFS3617");
-                        toast.makeText(getActivity(),"INF3617 Enabled: " + infs3617 + " Pre-req: " + infs3617pre, Toast.LENGTH_SHORT).show();
+                        //toast.makeText(getActivity(),"INF3617 Enabled: " + infs3617 + " Pre-req: " + infs3617pre, Toast.LENGTH_SHORT).show();
 
                         //Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
                         FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();

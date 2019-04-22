@@ -18,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private Context mContext;
 
     //DB version, table and database name
-    private static final int DB_VERSION = 6;
+    private static final int DB_VERSION = 7;
     private static final String DB_NAME = "CoursesDb";
     private static final String DB_TABLE = "Courses";
 
@@ -62,11 +62,11 @@ public class DbHelper extends SQLiteOpenHelper {
     private void addCourses() {
         Course c1 = new Course("INFS1602", "Information Systems", "Digital Transformation in Business \n\nStudents will learn to appreciate existing and emerging technologies affecting businesses, business relationships and their products and services. \n\nThe topics that are covered include: understanding the relationship between IS, Organisations & Strategy, dominant Business Models enabled by the Internet & Web 2.0 technology.", "Assessment Structure: \n- Workshop Participation: 20% \n- Midsession Quiz: 15% \n- Team Project: 15% \n- Final Exam: 50%", "Core", 1, 0, "", "", 1, 1, 1, 1);
         this.addCourseToDB(c1);
-        Course c2 = new Course("INFS1603", "Information Systems", "Introduction to Business Databases", "", "Core", 1, 0, "This course is only offered in T1 & T2", "", 1, 1, 0, 1);
+        Course c2 = new Course("INFS1603", "Information Systems", "Introduction to Business Databases \n\nThis course introduces students to the concepts, techniques and technologies relevant for creating and managing business databases", "Assessment Structure: \n- Lab Exercises: 10% \n- Midsession Quiz: 10% \n- Group Project: 30% \n- Final Exam: 50%", "Core", 1, 0, "This course is only offered in T1 & T2", "", 1, 1, 0, 1);
         this.addCourseToDB(c2);
-        Course c3 = new Course("INFS1609", "Information Systems", "Fundamentals of Business Programming", "", "Core", 1, 0, "This course is only offered in T1 & T3", "", 1, 0, 1, 1);
+        Course c3 = new Course("INFS1609", "Information Systems", "Fundamentals of Business Programming \n\nStudents will be introduced to the theoretical component of the course and during weekly workshop tutorials will engage in the practical compomemt i.e. learning how to write code using Netbeans Integrated Development Environment", "Assessment Structure: \n- Lab Exercises: 20% \n- Midsession Quiz: 10% \n- Assignment: 20% \n- Final Exam: 50%", "Core", 1, 0, "This course is only offered in T1 & T3", "", 1, 0, 1, 1);
         this.addCourseToDB(c3);
-        Course c4 = new Course("INFS2603", "Information Systems", "Business Analysis", "", "Core", 0, 0, "This course is only offered in T3 \n\nPlease ensure you have completed the following prerequisites: INFS1602 and INFS1603", "", 0, 0, 1, 0);
+        Course c4 = new Course("INFS2603", "Information Systems", "Business Analysis \n\nStudents will be introduced to a range of methods, tools and techniques in planning, analysing and designing information systems.", "Assessment Structure: \n- Tutorial Participation: 20% \n- Group Assignment: 30% \n- Final Exam: 50%", "Core", 0, 0, "This course is only offered in T3 \n\nPlease ensure you have completed the following prerequisites: INFS1602 and INFS1603", "", 0, 0, 1, 0);
         this.addCourseToDB(c4);
         Course c5 = new Course("INFS2605", "Information Systems", "Intermediate Business Programming", "", "Core", 0, 0, "This course is only offered in T1 & T3 \n\nPlease ensure you have completed the following prerequisites: INFS1603 and INFS1609", "", 1, 0, 1, 0);
         this.addCourseToDB(c5);
@@ -78,17 +78,17 @@ public class DbHelper extends SQLiteOpenHelper {
         this.addCourseToDB(c8);
         Course c9 = new Course("INFS3604", "Information Systems", "Business Process Management", "", "Core", 0, 0, "This course is only offered in T3 \n\nPlease ensure you have completed the following prerequisites: INFS2603", "", 0, 0, 1, 0);
         this.addCourseToDB(c9);
-        Course c10 = new Course("INFS3605", "Information Systems", "Information Systems Innovation & Transformation", "", "Core", 0, 0, "This course is only offered in T1 & T2 \n\nPlease ensure you have completed the following prerequisites: INFS3634", "", 1, 1, 0, 0);
+        Course c10 = new Course("INFS3605", "Information Systems", "Information Systems Innovation & Transformation \n\nThis is the capstone IS course that is centrally organised around practical, experiential, group software projects. Students will apply programming knowledge and teamwork learnt in previous courses in an applied and integrated fashion.", "Assessment Structure: \n- Workshop Participation: 15% \n- Individual Assignment 1: 25% \n- Group Assignment: 30% \n- Individual Assignment 2: 30%", "Core", 0, 0, "This course is only offered in T1 & T2 \n\nPlease ensure you have completed the following prerequisites: INFS3634", "", 1, 1, 0, 0);
         this.addCourseToDB(c10);
         Course c11 = new Course("INFS3617", "Information Systems", "Networking & Cyber Security", "", "Core", 0, 0, "This course is only offered in T1 \n\nPlease ensure you have completed the following prerequisites: INFS1602", "", 1, 0, 0, 0);
         this.addCourseToDB(c11);
         Course c12 = new Course("INFS3634", "Information Systems", "Mobile Applications Development", "", "Core", 0, 0, "This course is only offered in T1 & T3 \n\nPlease ensure you have completed the following prerequisites: INFS2605", "", 1, 0, 1, 0);
         this.addCourseToDB(c12);
-        Course c13 = new Course("ACCT1501", "Accounting", "Accounting & Financial Management 1A", "", "Core", 1, 0, "", "", 1, 1, 1, 1);
+        Course c13 = new Course("ACCT1501", "Accounting", "Accounting & Financial Management 1A \n\nThis will provide an introduction to basic concepts in accounting and their application for decision making by a wide range of potential users.", "Assessment Structure: \n- Tutorial Participation: 10% \n- MCQ Quiz: 15% \n- Mid-Session Test: 25% \n- Final Exam: 50%", "Core", 1, 0, "", "", 1, 1, 1, 1);
         this.addCourseToDB(c13);
-        Course c14 = new Course("MGMT1001", "Management", "Managing Organisations & People", "", "Core", 1, 0, "", "", 1, 1, 1, 1);
+        Course c14 = new Course("MGMT1001", "Management", "Managing Organisations & People \n\nThis course introduces students to the knowledge and skills required for the development of future organisational leaders and managers who will be able to successfully respond to complex and turbulent environments.", "Assessment Structure: \n- Participation: 15% \n- Gamulation: 10% \n- Professional Development Plan: 35% \n- Final Exam: 40%", "Core", 1, 0, "", "", 1, 1, 1, 1);
         this.addCourseToDB(c14);
-        Course c15 = new Course("ECON1203", "Economics", "Business & Economic Statistics", "", "Core", 1, 0, "", "", 1, 1, 1, 1);
+        Course c15 = new Course("ECON1203", "Economics", "Business & Economic Statistics \n\nCourse topics include: descriptive statistics, probably distributions, point and interval estimation of parameters, hypothesis testing and regression models.", "Assessment Structure: \n- Case Study: 25% \n- Mid-term Test: 20% \n- Reflection: 30% \n- Final Exam: 50%", "Core", 1, 0, "", "", 1, 1, 1, 1);
         this.addCourseToDB(c15);
         Course c16 = new Course("MATH1041", "Mathematics & Statistics", "Statistics for Life & Social Sciences", "", "Core", 1, 0, "", "", 1, 1, 1, 1);
         this.addCourseToDB(c16);
@@ -98,7 +98,7 @@ public class DbHelper extends SQLiteOpenHelper {
         this.addCourseToDB(c18);
         Course c19 = new Course("INFS2631", "Information Systems", "Innovation and Technology Management \n\nThis course will analyse how small and large firms innovate, commercial and compete in competitive markets through the development and management of technology. The course emphasises the role of crowdsourcing, social media and social networks.\n\n", "Assessment Structure: \n- Participation: 10% \n- Pre-class Quizzes: 15% \n- Group Assignment: 25% \n- Final Exam: 50%", "Elective", 0, 0, "This course is only offered in T1 \n\nPlease ensure you have completed the following prerequisites: INFS1602", "", 1, 0, 0, 0);
         this.addCourseToDB(c19);
-        Course c20 = new Course("INFS3020", "Information Systems", "International Information Systems and Technology Practicum", "", "Elective", 0, 0, "This course is only offered in T2", "", 0, 1, 0, 1);
+        Course c20 = new Course("INFS3020", "Information Systems", "International Information Systems and Technology Practicum \n\nThis course affords students the opportunity to develop knowledge & understanding of international aspect of information systems/technology business operations through firsthand observation of businesses in Asian countries.", "Assessment Structure: \n- Field Trip: 30% \n- Team Project: 30% \n- Individual Report: 25% \n- Reflection: 15%", "Elective", 0, 0, "This course is only offered in T2", "", 0, 1, 0, 1);
         this.addCourseToDB(c20);
         Course c21 = new Course("INFS3632", "Information Systems", "Service and Quality Management", "", "Elective", 0, 0, "This course is only offered in T2 \n\nPlease ensure you have completed the following prerequisites: INFS1602", "", 0, 1, 0, 0);
         this.addCourseToDB(c21);
@@ -106,7 +106,7 @@ public class DbHelper extends SQLiteOpenHelper {
         this.addCourseToDB(c22);
         Course c23 = new Course("INFS3873", "Information Systems", "Business Analytics Method", "", "Elective", 0, 0, "This course is only offered in T3 \n\nPlease ensure you have completed the following prerequisites: INFS3603", "", 0, 0, 1, 0);
         this.addCourseToDB(c23);
-        Course c24 = new Course("ARTS1010", "Arts", "The Life of Words", "", "General Education", 1, 0, "This course is only offered in T1", "", 1, 0, 0, 1);
+        Course c24 = new Course("ARTS1010", "Arts", "The Life of Words \n\nThis course will examine the form of the short story. Focusing on modernist and contemporary examples, the course will explore the principles that have shaped the development of this form.", "Assessment Structure: \n- Participation: 10% \n- Reflection: 15% \n- Individual Assignment: 25% \n- Creative Story: 50%", "General Education", 1, 0, "This course is only offered in T1", "", 1, 0, 0, 1);
         this.addCourseToDB(c24);
         Course c25 = new Course("ARTS1091", "Arts", "Media, Society, Politics", "", "General Education", 1, 0, "This course is only offered in T3", "", 0, 0, 1, 1);
         this.addCourseToDB(c25);
