@@ -46,7 +46,7 @@ public class FriendsView extends Fragment {
         int remainingGen = dbHelper.getRemainingGeneralCourses();
         int total = remainingCore + remainingElective + remainingGen;
         ScoreF.setProgress(24 - total);
-        button8 = rootView.findViewById(R.id.button8);
+        button8 = rootView.findViewById(R.id.addButton);
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

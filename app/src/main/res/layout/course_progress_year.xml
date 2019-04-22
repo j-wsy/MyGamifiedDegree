@@ -65,7 +65,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="10dp"
-                    android:text="You have successfully completed your enrolment for the Term"
+                    android:text="You have successfully completed your enrolment for the Year!"
                     android:textAlignment="center"
                     android:textSize="20sp" />
 

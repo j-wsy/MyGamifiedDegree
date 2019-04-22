@@ -58,13 +58,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_rewardboard:
-                Intent intent = new Intent(HomeActivity.this, RewardBoardNew.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(HomeActivity.this, RewardBoardNew.class);
+                startActivity(intent);*/
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new RewardBoardFragment()).commit();
                 break;
 
             case R.id.nav_avatar:
-                Intent intent2 = new Intent(HomeActivity.this, Avatar.class);
-                startActivity(intent2);
+                /*Intent intent2 = new Intent(HomeActivity.this, Avatar.class);
+                startActivity(intent2);*/
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AvatarFragment()).commit();
                 break;
 
             case R.id.nav_friends:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,108 +7,149 @@
     android:background="@drawable/background"
     tools:context=".Avatar">
 
-
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/avatarView"
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/customMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Change the colour of Clancy's mane"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/avatarName" />
+
+            <TextView
+                android:id="@+id/avatarView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="80dp"
+                android:text="My Avatar"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="35sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/avatarImage"
+                android:layout_width="247dp"
+                android:layout_height="250dp"
+                android:layout_marginLeft="44dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/avatarView" />
+
+
+            <TextView
+                android:id="@+id/avatarName"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginLeft="96dp"
+                android:layout_marginStart="96dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="This is Clancy"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/avatarImage" />
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardview1"
+                android:layout_width="99dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="25dp"
+                android:clickable="true"
+                app:cardBackgroundColor="@color/colorPurple"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/customMessage"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="334dp">
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardview2"
+                android:layout_width="99dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="12dp"
+                android:clickable="true"
+                app:cardBackgroundColor="@color/yellow"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                app:layout_constraintBottom_toBottomOf="@id/cardview1"
+                app:layout_constraintLeft_toRightOf="@id/cardview1"
+                app:layout_constraintTop_toBottomOf="@id/customMessage"
+                app:layout_constraintVertical_bias="1.0">
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cardview3"
+                android:layout_width="99dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="12dp"
+                android:clickable="true"
+                app:cardBackgroundColor="@color/blue"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false"
+                app:layout_constraintBottom_toBottomOf="@id/cardview2"
+                app:layout_constraintLeft_toRightOf="@id/cardview2"
+                app:layout_constraintTop_toBottomOf="@id/customMessage"
+                app:layout_constraintVertical_bias="1.0">
+
+            </android.support.v7.widget.CardView>
+
+            <Button
+            android:id="@+id/resetButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginLeft="92dp"
-            android:text="My Avatar"
-            android:textAlignment="center"
-            android:textColor="@color/lightGrey"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/avatarImage"
-            android:layout_width="247dp"
-            android:layout_height="250dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginLeft="44dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/avatarView" />
-
-
-        <TextView
-            android:id="@+id/customView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="230dp"
             android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="Change the colour of Clancy's mane"
-            android:textAlignment="center"
-            android:textColor="@color/lightGrey"
-            android:textSize="18sp"
+            android:background="@drawable/rounded_button"
+            android:text="Reset"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/avatarImage" />
+            app:layout_constraintTop_toBottomOf="@id/cardview3" />
 
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/cardview1"
-            android:layout_width="99dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="75dp"
-            android:clickable="true"
-            app:cardBackgroundColor="@color/colorPurple"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            app:cardUseCompatPadding="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/avatarImage"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="334dp">
+            <Button
+                android:id="@+id/placeholder"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_marginLeft="230dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/resetButton" />
 
-        </android.support.v7.widget.CardView>
+        </android.support.constraint.ConstraintLayout>
 
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/cardview2"
-            android:layout_width="99dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="12dp"
-            android:clickable="true"
-            app:cardBackgroundColor="@color/yellow"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            app:cardUseCompatPadding="false"
-            app:layout_constraintBottom_toBottomOf="@id/cardview1"
-            app:layout_constraintLeft_toRightOf="@id/cardview1"
-            app:layout_constraintTop_toBottomOf="@id/avatarImage"
-            app:layout_constraintVertical_bias="1.0">
+    </RelativeLayout>
 
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/cardview3"
-            android:layout_width="99dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="12dp"
-            android:clickable="true"
-            app:cardBackgroundColor="@color/blue"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            app:cardUseCompatPadding="false"
-            app:layout_constraintBottom_toBottomOf="@id/cardview2"
-            app:layout_constraintLeft_toRightOf="@id/cardview2"
-            app:layout_constraintTop_toBottomOf="@id/avatarImage"
-            app:layout_constraintVertical_bias="1.0">
-
-        </android.support.v7.widget.CardView>
-
-    </android.support.constraint.ConstraintLayout>
-
-
-</RelativeLayout>
+</ScrollView>

@@ -36,7 +36,7 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
                 viewPager.setCurrentItem(tab.getPosition());
                 position = tab.getPosition();
                 viewPager.getAdapter().notifyDataSetChanged();
-                //toast.makeText(getApplicationContext(),"The tab position is "+ position,Toast.LENGTH_SHORT).show();
+                /*toast.makeText(getApplicationContext(),"The tab position is "+ position,Toast.LENGTH_SHORT).show();
                 if (position == 0) {
                     int fragno = getSupportFragmentManager().getFragments().size();
                     toast.makeText(getApplicationContext(),"Fragment No: " + fragno, Toast.LENGTH_SHORT).show();
@@ -46,7 +46,7 @@ public class CourseOverview extends AppCompatActivity implements Term1.OnFragmen
                 } else if (position == 2) {
                     int fragno = getSupportFragmentManager().getFragments().size();
                     toast.makeText(getApplicationContext(),"Fragment No: " + fragno, Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
 
             @Override
