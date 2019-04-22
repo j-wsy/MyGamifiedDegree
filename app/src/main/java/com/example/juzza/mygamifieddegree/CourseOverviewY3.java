@@ -26,12 +26,16 @@ public class CourseOverviewY3 extends AppCompatActivity implements Term1Y3.OnFra
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final PagerAdapterY3 adapter = new PagerAdapterY3(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
+        //viewPager.setOffscreenPageLimit(0);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 viewPager.getAdapter().notifyDataSetChanged();
+                viewPager.getAdapter().notifyDataSetChanged();
+                int position = tab.getPosition();
+                toast.makeText(getApplicationContext(),"Y3 Position: " + position, Toast.LENGTH_SHORT).show();
 
             }
 

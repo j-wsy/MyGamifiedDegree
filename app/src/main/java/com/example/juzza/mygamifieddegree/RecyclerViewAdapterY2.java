@@ -89,8 +89,8 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
                                 toast.makeText(mContext,termSelected,Toast.LENGTH_SHORT).show();
-                                int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
-                                toast.makeText(mContext,termSelected + " " +fragno,Toast.LENGTH_SHORT).show();
+                                /*int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
+                                toast.makeText(mContext,termSelected + " " +fragno,Toast.LENGTH_SHORT).show();*/
 
                             }else if (tabNumber == 1){
                                 String termSelected = "T2Y2";
@@ -104,8 +104,8 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
-                                int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
-                                toast.makeText(mContext,termSelected + " " +fragno,Toast.LENGTH_SHORT).show();
+                                /*int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
+                                toast.makeText(mContext,termSelected + " " +fragno,Toast.LENGTH_SHORT).show();*/
 
                             }else if (tabNumber == 2) {
                                 String termSelected = "T3Y2";
@@ -119,8 +119,8 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
-                                int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
-                                toast.makeText(mContext,termSelected + " " +fragno,Toast.LENGTH_SHORT).show();
+                                /*int fragno = ((FragmentActivity) mContext).getSupportFragmentManager().getFragments().size();
+                                toast.makeText(mContext,termSelected + " " +fragno,Toast.LENGTH_SHORT).show();*/
                             }
 
                             dialog.dismiss();

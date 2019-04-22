@@ -53,6 +53,8 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
             public void onClick(View v) {
 
                 if (courseList.get(position).getIsEnabled() == 1) {
+                    int tabNumber = CourseOverviewY3.getTabNumber();
+                    toast.makeText(mContext,"Y3 Tab No: " +tabNumber,Toast.LENGTH_SHORT).show();
                     dialog = new Dialog(mContext);
                     dialog.setContentView(R.layout.activity_course_information);
                     ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
@@ -74,7 +76,7 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                             int tabNumber = CourseOverviewY3.getTabNumber();
                             dbHelper.updateIsCompleted(course);
                             if (tabNumber == 0){
-                                String termSelected = "T1Y2";
+                                String termSelected = "T1Y3";
                                 dbHelper.updateTerm(course,termSelected);
                                 Term1Y3.adapter.notifyDataSetChanged();
                                 Term1Y3.adapter2.notifyDataSetChanged();
@@ -87,7 +89,7 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.commit();
 
                             }else if (tabNumber == 1){
-                                String termSelected = "T2Y2";
+                                String termSelected = "T2Y3";
                                 dbHelper.updateTerm(course,termSelected);
                                 Term2Y3.adapter.notifyDataSetChanged();
                                 Term2Y3.adapter2.notifyDataSetChanged();
@@ -100,7 +102,7 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.commit();
 
                             }else if (tabNumber == 2) {
-                                String termSelected = "T3Y2";
+                                String termSelected = "T3Y3";
                                 dbHelper.updateTerm(course,termSelected);
                                 Term3Y3.adapter.notifyDataSetChanged();
                                 Term3Y3.adapter2.notifyDataSetChanged();

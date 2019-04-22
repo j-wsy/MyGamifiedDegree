@@ -28,7 +28,7 @@ public class CourseOverviewY2 extends AppCompatActivity implements Term1Y2.OnFra
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         //newly added viewpager line
-        viewPager.setOffscreenPageLimit(2);
+        //viewPager.setOffscreenPageLimit(0);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

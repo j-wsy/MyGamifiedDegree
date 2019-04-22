@@ -130,7 +130,7 @@ public class Term3Y3 extends Fragment {
         recyclerView4 = rootView.findViewById(R.id.recyclerView4);
         recyclerView4.setHasFixedSize(true);
         recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        courseList4 = dbHelper.getAllT3Y2Courses();
+        courseList4 = dbHelper.getAllT3Y3Courses();
         adapter4 = new RecyclerViewAdapterY3(getActivity(), courseList4);
         recyclerView4.setAdapter(adapter4);
 
