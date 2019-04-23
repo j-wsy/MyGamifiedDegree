@@ -257,11 +257,13 @@ public class Term3Y3 extends Fragment {
 
                 t1Avail = dbHelper.getT1RemAvail();
                 dbHelper.updateEnable(t1Avail);
-                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                Fragment fragment2 = new MessageFragment();
-                fragmentTransaction.replace(R.id.course_container, fragment2);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                        /*FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                        Fragment fragment2 = new MessageFragment();
+                        fragmentTransaction.replace(R.id.course_container,fragment2);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();*/
+                Intent intent = new Intent(getActivity(),HomeActivity.class);
+                startActivity(intent);
             };
 
         });

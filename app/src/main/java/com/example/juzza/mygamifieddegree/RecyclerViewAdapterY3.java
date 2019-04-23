@@ -54,7 +54,7 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
 
                 if (courseList.get(position).getIsEnabled() == 1) {
                     int tabNumber = CourseOverviewY3.getTabNumber();
-                    toast.makeText(mContext,"Y3 Tab No: " +tabNumber,Toast.LENGTH_SHORT).show();
+                    //toast.makeText(mContext,"Y3 Tab No: " +tabNumber,Toast.LENGTH_SHORT).show();
                     dialog = new Dialog(mContext);
                     dialog.setContentView(R.layout.activity_course_information);
                     ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
@@ -87,7 +87,7 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
-                                toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
+                                //toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 1){
                                 String termSelected = "T2Y3";
@@ -101,7 +101,7 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
-                                toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
+                                //toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 2) {
                                 String termSelected = "T3Y3";
@@ -115,8 +115,8 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
-                                toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
-                                toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
+                                //toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
+                                //toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
                             }
 
                             dialog.dismiss();

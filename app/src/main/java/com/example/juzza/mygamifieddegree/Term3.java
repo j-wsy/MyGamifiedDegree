@@ -265,16 +265,14 @@ public class Term3 extends Fragment {
                         dbHelper.updateEnable(t1Avail);
                         int infs3617 = dbHelper.getIsEnabled("INFS3617");
                         int infs3617pre = dbHelper.getPrereq("INFS3617");
-                        //toast.makeText(getActivity(),"INF3617 Enabled: " + infs3617 + " Pre-req: " + infs3617pre, Toast.LENGTH_SHORT).show();
 
-                        //Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);
-                        FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                        /*FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                         Fragment fragment2 = new MessageFragment();
-                        //fragmentTransaction.detach(fragment);
-                        //fragmentTransaction.attach(fragment2);
                         fragmentTransaction.replace(R.id.course_container,fragment2);
                         fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.commit();
+                        fragmentTransaction.commit();*/
+                        Intent intent = new Intent(getActivity(),HomeActivity.class);
+                        startActivity(intent);
                     }
 
 
