@@ -54,8 +54,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
 
                 if (courseList.get(position).getIsEnabled() == 1) {
-                    int tabNumber = CourseOverview.getTabNumber();
-                    toast.makeText(mContext,"Tab No: " +tabNumber,Toast.LENGTH_SHORT).show();
+                    final int tabNumber = CourseOverview.getTabNumber();
+                    toast.makeText(mContext,"Y1 Tab No: " +tabNumber,Toast.LENGTH_SHORT).show();
                     dialog = new Dialog(mContext);
                     dialog.setContentView(R.layout.activity_course_information);
                     ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
@@ -74,7 +74,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     addButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick (View v) {
-                            int tabNumber = CourseOverview.getTabNumber();
+                            //int tabNumber = CourseOverview.getTabNumber();
                             dbHelper.updateIsCompleted(course);
                             if (tabNumber == 0){
                                 String termSelected = "T1";
@@ -89,7 +89,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
                                 int tabNumber2 = CourseOverviewY2.getTabNumber();
-                                toast.makeText(mContext,"Tab No: " +tabNumber2,Toast.LENGTH_SHORT).show();
+                                //toast.makeText(mContext,"Tab No: " +tabNumber2,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 1){
                                 String termSelected = "T2";

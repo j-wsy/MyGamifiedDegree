@@ -87,6 +87,7 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
+                                toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 1){
                                 String termSelected = "T2Y3";
@@ -100,6 +101,7 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
+                                toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
 
                             }else if (tabNumber == 2) {
                                 String termSelected = "T3Y3";
@@ -113,6 +115,8 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
                                 fragmentTransaction.detach(fragment);
                                 fragmentTransaction.attach(fragment);
                                 fragmentTransaction.commit();
+                                toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
+                                toast.makeText(mContext,"Term: " + termSelected,Toast.LENGTH_SHORT).show();
                             }
 
                             dialog.dismiss();

@@ -56,7 +56,6 @@ public class Term3Y3 extends Fragment {
     Toast toast;
 
 
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -130,7 +129,8 @@ public class Term3Y3 extends Fragment {
         recyclerView4 = rootView.findViewById(R.id.recyclerView4);
         recyclerView4.setHasFixedSize(true);
         recyclerView4.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        courseList4 = dbHelper.getAllT3Y3Courses();
+        //changed to T2 was T3
+        courseList4 = dbHelper.getAllT2Y3Courses();
         adapter4 = new RecyclerViewAdapterY3(getActivity(), courseList4);
         recyclerView4.setAdapter(adapter4);
 
@@ -179,103 +179,98 @@ public class Term3Y3 extends Fragment {
             public void onClick(View v) {
                 final DbHelper dbHelper = new DbHelper(getActivity());
 
-                dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.course_progress_grad);
-                ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-                TextView remainingCourses = (TextView) dialog.findViewById(R.id.remainingCourses);
-                String remainingDesc = dbHelper.getRemainingCoreCourses() + " core(s) \n" + dbHelper.getRemainingElectiveCourses() + " elective(s) \n" + dbHelper.getRemainingGeneralCourses() + " gen ed(s)";
-                remainingCourses.setText(remainingDesc);
+                final Dialog dialog2 = new Dialog(getActivity());
+                dialog2.setContentView(R.layout.badge_notif);
+                ImageView closeButton = (ImageView) dialog2.findViewById(R.id.closeButton);
+                dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog2.show();
                 closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.dismiss();
-
-                        final Dialog dialog2 = new Dialog(getActivity());
-                        dialog2.setContentView(R.layout.badge_notif);
-                        ImageView closeButton = (ImageView) dialog2.findViewById(R.id.closeButton);
-                        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        dialog2.show();
+                        dialog2.dismiss();
+                        final Dialog dialog3 = new Dialog(getActivity());
+                        dialog3.setContentView(R.layout.course_progress_grad);
+                        ImageView closeButton = (ImageView) dialog3.findViewById(R.id.closeButton);
+                        dialog3.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog3.show();
                         closeButton.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onClick(View v) {
-                                dialog2.dismiss();
-                                enrolButton.setVisibility(View.INVISIBLE);
+                            public void onClick(View view) {
+                                dialog3.dismiss();
+                                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                                Fragment fragment2 = new MessageFragment();
+                                fragmentTransaction.replace(R.id.course_container,fragment2);
+                                fragmentTransaction.addToBackStack(null);
+                                fragmentTransaction.commit();
                             }
                         });
-
-                        Button viewButton = (Button) dialog2.findViewById(R.id.viewButton);
-                        viewButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(getActivity(),RewardBoardNew.class);
-                                startActivity(intent);
-                            }
-                        });
-
-                        t1Unavail = dbHelper.getT1RemUnavail();
-                        dbHelper.updateDisable(t1Unavail);
-
-                        if (dbHelper.getIsCompleted("INFS1602") == 1) {
-                            dbHelper.updatePrereq("INFS2621");
-                            dbHelper.updatePrereq("INFS3603");
-                            dbHelper.updatePrereq("INFS3617");
-                            dbHelper.updatePrereq("INFS2631");
-                            dbHelper.updatePrereq("INFS3632");
-                            if (dbHelper.getIsCompleted("INFS1603") == 1) {
-                                dbHelper.updatePrereq("INFS2603");
-                            }
-                        }
-
-                        if (dbHelper.getIsCompleted("INFS1603") == 1) {
-                            dbHelper.updatePrereq("INFS2608");
-                            if (dbHelper.getIsCompleted("INFS1609") == 1) {
-                                dbHelper.updatePrereq("INFS2605");
-                            }
-                        }
-
-                        if (dbHelper.getIsCompleted("INFS2603") ==1) {
-                            dbHelper.updatePrereq("INFS3604");
-                        }
-
-                        if (dbHelper.getIsCompleted("INFS3634") ==1) {
-                            dbHelper.updatePrereq("INFS3605");
-                        }
-
-                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
-                            dbHelper.updatePrereq("INFS3634");
-                        }
-
-                        if (dbHelper.getIsCompleted("INFS2605") ==1) {
-                            dbHelper.updatePrereq("INFS3830");
-                            dbHelper.updatePrereq("INFS3873");
-                        }
-
-
-                        t1Avail = dbHelper.getT1RemAvail();
-                        dbHelper.updateEnable(t1Avail);
-                        FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                        Fragment fragment2 = new MessageFragment();
-                        fragmentTransaction.replace(R.id.course_container,fragment2);
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.commit();
                     }
-
-
-                    ;
-
                 });
 
-            }
+                Button viewButton = (Button) dialog2.findViewById(R.id.viewButton);
+                viewButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), RewardBoardNew.class);
+                        startActivity(intent);
+                    }
+                });
 
-            ;
+                t1Unavail = dbHelper.getT1RemUnavail();
+                dbHelper.updateDisable(t1Unavail);
+
+                if (dbHelper.getIsCompleted("INFS1602") == 1) {
+                    dbHelper.updatePrereq("INFS2621");
+                    dbHelper.updatePrereq("INFS3603");
+                    dbHelper.updatePrereq("INFS3617");
+                    dbHelper.updatePrereq("INFS2631");
+                    dbHelper.updatePrereq("INFS3632");
+                    if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                        dbHelper.updatePrereq("INFS2603");
+                    }
+                }
+
+                if (dbHelper.getIsCompleted("INFS1603") == 1) {
+                    dbHelper.updatePrereq("INFS2608");
+                    if (dbHelper.getIsCompleted("INFS1609") == 1) {
+                        dbHelper.updatePrereq("INFS2605");
+                    }
+                }
+
+                if (dbHelper.getIsCompleted("INFS2603") == 1) {
+                    dbHelper.updatePrereq("INFS3604");
+                }
+
+                if (dbHelper.getIsCompleted("INFS3634") == 1) {
+                    dbHelper.updatePrereq("INFS3605");
+                }
+
+                if (dbHelper.getIsCompleted("INFS2605") == 1) {
+                    dbHelper.updatePrereq("INFS3634");
+                }
+
+                if (dbHelper.getIsCompleted("INFS2605") == 1) {
+                    dbHelper.updatePrereq("INFS3830");
+                    dbHelper.updatePrereq("INFS3873");
+                }
+
+
+                t1Avail = dbHelper.getT1RemAvail();
+                dbHelper.updateEnable(t1Avail);
+                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                Fragment fragment2 = new MessageFragment();
+                fragmentTransaction.replace(R.id.course_container, fragment2);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            };
+
         });
 
-
         return rootView;
-
     }
+
+    ;
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

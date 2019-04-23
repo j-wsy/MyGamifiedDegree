@@ -147,7 +147,7 @@ public class Term2Y3 extends Fragment {
                     recyclerView3.setHasFixedSize(true);
                     recyclerView3.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     courseList3 = dbHelper.getArtsCourses();
-                    RecyclerViewAdapter adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
+                    adapter3 = new RecyclerViewAdapter(getActivity(), courseList3);
                     recyclerView3.setAdapter(adapter3);
                 } else {
                     courseList3 = new ArrayList<>();

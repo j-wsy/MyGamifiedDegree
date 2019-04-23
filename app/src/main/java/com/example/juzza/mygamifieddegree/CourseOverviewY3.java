@@ -20,10 +20,10 @@ public class CourseOverviewY3 extends AppCompatActivity implements Term1Y3.OnFra
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Term 1"));
         tabLayout.addTab(tabLayout.newTab().setText("Term 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Term 3"));
+        tabLayout.addTab(tabLayout.newTab().setText(""));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager3);
         final PagerAdapterY3 adapter = new PagerAdapterY3(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         //viewPager.setOffscreenPageLimit(0);
@@ -33,7 +33,6 @@ public class CourseOverviewY3 extends AppCompatActivity implements Term1Y3.OnFra
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 viewPager.getAdapter().notifyDataSetChanged();
-                viewPager.getAdapter().notifyDataSetChanged();
                 int position = tab.getPosition();
                 toast.makeText(getApplicationContext(),"Y3 Position: " + position, Toast.LENGTH_SHORT).show();
 
@@ -41,6 +40,7 @@ public class CourseOverviewY3 extends AppCompatActivity implements Term1Y3.OnFra
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
+                viewPager.getAdapter().notifyDataSetChanged();
 
             }
 
@@ -48,7 +48,7 @@ public class CourseOverviewY3 extends AppCompatActivity implements Term1Y3.OnFra
             public void onTabReselected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 viewPager.getAdapter().notifyDataSetChanged();
-
+                position = tab.getPosition();
 
             }
         });
