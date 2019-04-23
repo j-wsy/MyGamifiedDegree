@@ -53,6 +53,9 @@ public class Term2Y3 extends Fragment {
     List<String> t3Avail;
     List<String> t3Unavail;
     Toast toast;
+    List<String> core;
+    List<String> elective;
+    List<String> general;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -250,7 +253,6 @@ public class Term2Y3 extends Fragment {
                             dbHelper.updatePrereq("INFS3873");
                         }
 
-
                         t3Avail = dbHelper.getT3RemAvail();
                         dbHelper.updateEnable(t3Avail);
                         Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(2);
@@ -269,6 +271,8 @@ public class Term2Y3 extends Fragment {
 
             ;
         });
+
+
 
         return rootView;
 

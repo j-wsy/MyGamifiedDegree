@@ -171,5 +171,4 @@ public class RecyclerViewAdapterY3 extends RecyclerView.Adapter<RecyclerViewAdap
             cardview = (CardView) itemView.findViewById(R.id.cardview_id);
         }
     }
-
 }

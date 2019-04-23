@@ -53,6 +53,9 @@ public class Term1Y3 extends Fragment {
     List<String> t2Avail;
     List<String> t2Unavail;
     Toast toast;
+    List<String> core;
+    List<String> elective;
+    List<String> general;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -247,6 +250,26 @@ public class Term1Y3 extends Fragment {
                             dbHelper.updatePrereq("INFS3830");
                             dbHelper.updatePrereq("INFS3873");
                         }
+
+
+                        if (dbHelper.getRemainingCoreCourses()==0) {
+                            core = dbHelper.getCoreToDisable();
+                            dbHelper.disableCourse(core);
+
+                        }
+
+                        if (dbHelper.getRemainingElectiveCourses()==0) {
+                            elective = dbHelper.getElectiveToDisable();
+                            dbHelper.disableCourse(elective);
+
+                        }
+
+                        if (dbHelper.getRemainingElectiveCourses()==0) {
+                            general = dbHelper.getGeneralToDisable();
+                            dbHelper.disableCourse(general);
+
+                        }
+
                         t2Avail = dbHelper.getT2RemAvail();
                         dbHelper.updateEnable(t2Avail);
                         Fragment fragment = (Fragment) (getActivity()).getSupportFragmentManager().getFragments().get(1);

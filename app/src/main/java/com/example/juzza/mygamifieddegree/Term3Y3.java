@@ -54,6 +54,9 @@ public class Term3Y3 extends Fragment {
     List<String> t1Avail;
     List<String> t1Unavail;
     Toast toast;
+    List<String> core;
+    List<String> elective;
+    List<String> general;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -252,6 +255,24 @@ public class Term3Y3 extends Fragment {
                 if (dbHelper.getIsCompleted("INFS2605") == 1) {
                     dbHelper.updatePrereq("INFS3830");
                     dbHelper.updatePrereq("INFS3873");
+                }
+
+                if (dbHelper.getRemainingCoreCourses()==0) {
+                    core = dbHelper.getCoreToDisable();
+                    dbHelper.disableCourse(core);
+
+                }
+
+                if (dbHelper.getRemainingElectiveCourses()==0) {
+                    elective = dbHelper.getElectiveToDisable();
+                    dbHelper.disableCourse(elective);
+
+                }
+
+                if (dbHelper.getRemainingElectiveCourses()==0) {
+                    general = dbHelper.getGeneralToDisable();
+                    dbHelper.disableCourse(general);
+
                 }
 
 

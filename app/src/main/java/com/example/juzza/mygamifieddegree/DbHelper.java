@@ -371,25 +371,69 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    //wip
-
-    public void updateDisable3(List<String> course) {
+    public void disableCourse(List<String> course) {
 
         String[] courseStrings = new String[course.size()];
         courseStrings = course.toArray(courseStrings);
 
         SQLiteDatabase db = this.getWritableDatabase();
         for (String title : courseStrings) {
-            db.execSQL(String.format("UPDATE courses SET enabled = 0 WHERE title = ?", title));
+            String query = "UPDATE " + DB_TABLE + " SET " + IsEnabled +
+                    " = '" + 0 + "' WHERE " + CourseTitle + " = '" + title + "'";
+            db.execSQL(query);
         }
 
-        //db.rawQuery("UPDATE courses SET enabled = 0 WHERE title =?", courseStrings);
-        /*SQLiteDatabase db = this.getWritableDatabase();
-            String query = "UPDATE " + DB_TABLE + " SET " + IsEnabled +
-                    " = '" + 0 + "' WHERE " + CourseTitle + " = '" + course + "'";
-            db.execSQL(query);*/
-
     }
+
+    public List<String> getCoreToDisable() {
+        List<String> array = new ArrayList<String>();
+        dbase = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE completed = 0 AND type = 'Core'";
+        Cursor cursor = dbase.rawQuery(selectQuery, null);
+        rowCount = cursor.getCount();
+
+        while (cursor.moveToNext()) {
+            String uname = cursor.getString(cursor.getColumnIndex("title"));
+            array.add(uname);
+        }
+
+
+        return array;
+    }
+
+    public List<String> getElectiveToDisable() {
+        List<String> array = new ArrayList<String>();
+        dbase = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE completed = 0 AND type = 'Elective'";
+        Cursor cursor = dbase.rawQuery(selectQuery, null);
+        rowCount = cursor.getCount();
+
+        while (cursor.moveToNext()) {
+            String uname = cursor.getString(cursor.getColumnIndex("title"));
+            array.add(uname);
+        }
+
+
+        return array;
+    }
+
+    public List<String> getGeneralToDisable() {
+        List<String> array = new ArrayList<String>();
+        dbase = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + DB_TABLE + " WHERE completed = 0 AND type = 'General'";
+        Cursor cursor = dbase.rawQuery(selectQuery, null);
+        rowCount = cursor.getCount();
+
+        while (cursor.moveToNext()) {
+            String uname = cursor.getString(cursor.getColumnIndex("title"));
+            array.add(uname);
+        }
+
+
+        return array;
+    }
+
+
 
     public List<String> getDisable() {
         List<String> array = new ArrayList<String>();
