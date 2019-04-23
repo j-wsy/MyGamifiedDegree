@@ -53,7 +53,7 @@ public class MessageFragment extends Fragment {
                 }
 
                 else{
-                    toast.makeText(getActivity(), "This stage is locked. Please complete your Year 1 enrolment", Toast.LENGTH_SHORT).show();
+                    toast.makeText(getActivity(), "This stage is locked. Please complete your Year 1 enrolment.", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -75,7 +75,7 @@ public class MessageFragment extends Fragment {
                 }
 
                 else{
-                    toast.makeText(getActivity(), "This stage is locked. Please complete your Year 2 enrolment", Toast.LENGTH_SHORT).show();
+                    toast.makeText(getActivity(), "This stage is locked. Please complete your Year 2 enrolment.", Toast.LENGTH_SHORT).show();
                 }
 
             }

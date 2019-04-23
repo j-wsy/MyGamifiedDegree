@@ -34,7 +34,7 @@ public class CourseOverviewY3 extends AppCompatActivity implements Term1Y3.OnFra
                 viewPager.setCurrentItem(tab.getPosition());
                 viewPager.getAdapter().notifyDataSetChanged();
                 int position = tab.getPosition();
-                toast.makeText(getApplicationContext(),"Y3 Position: " + position, Toast.LENGTH_SHORT).show();
+                //toast.makeText(getApplicationContext(),"Y3 Position: " + position, Toast.LENGTH_SHORT).show();
 
             }
 

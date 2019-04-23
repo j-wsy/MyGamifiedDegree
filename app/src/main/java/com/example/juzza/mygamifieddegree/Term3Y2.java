@@ -201,7 +201,8 @@ public class Term3Y2 extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 dialog2.dismiss();
-                                enrolButton.setVisibility(View.INVISIBLE);
+                                Intent intent = new Intent(getActivity(),HomeActivity.class);
+                                startActivity(intent);
                             }
                         });
 
@@ -260,8 +261,6 @@ public class Term3Y2 extends Fragment {
                         fragmentTransaction.replace(R.id.course_container,fragment2);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();*/
-                        Intent intent = new Intent(getActivity(),HomeActivity.class);
-                        startActivity(intent);
                     }
 
 

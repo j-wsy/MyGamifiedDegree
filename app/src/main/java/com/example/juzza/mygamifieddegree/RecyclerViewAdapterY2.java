@@ -55,7 +55,7 @@ public class RecyclerViewAdapterY2 extends RecyclerView.Adapter<RecyclerViewAdap
 
                 if (courseList.get(position).getIsEnabled() == 1) {
                     int tabNumber = CourseOverviewY2.getTabNumber();
-                    toast.makeText(mContext,"Tab No: " +tabNumber,Toast.LENGTH_SHORT).show();
+                    //toast.makeText(mContext,"Tab No: " +tabNumber,Toast.LENGTH_SHORT).show();
                     dialog = new Dialog(mContext);
                     dialog.setContentView(R.layout.activity_course_information);
                     ImageView closeButton = (ImageView) dialog.findViewById(R.id.closeButton);
